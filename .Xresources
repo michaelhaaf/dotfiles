@@ -34,7 +34,11 @@ URxvt*scrollBar:		false
 URxvt*scrollBar_right:		false
 URxvt*transpscrollbar:		false
 URxvt*saveLines:		32767
-
+URxvt*perl-ext-common:		...,tabbed,...
+URxvt*tabbed.tabbar-fg:		2
+URxvt*tabbed.tabbar-bg: 	0
+URxvt*tabbed.tab-fg: 		3
+URxvt*tabbed.tab-bg: 		0
 
 ! Color settings
 

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# starts Xorg on the same virtual terminal where login occurs
+# maintains an authenticated session with logind, prevents bypassing the screen locker by switching terminals
+exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR

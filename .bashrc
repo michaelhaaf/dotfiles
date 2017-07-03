@@ -7,6 +7,15 @@ alias config='/usr/bin/git --git-dir=/home/michael/.cfg/ --work-tree=/home/micha
 
 alias ls='ls --color=auto'
 
-PS1='[\u@\h \W]\$ '
+# PS1='[\u@\h \W]\$ '
+# 0;30m   Black
+# 0;31m   Red
+# 0;32m   Green
+# 0;33m   Yellow
+# 0;34m   Blue
+# 0;35m   Purple
+# 0;36m   Cyan
+# 0;37m   White
+PS1='\[\e[1;31m\]\u@\h \w ->\n\[\e[1;32m\] \@ \d\$\[\e[m\] '
 
 export _JAVA_AWT_WM_NONREPARENTING=1

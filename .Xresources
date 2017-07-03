@@ -1,44 +1,52 @@
 ! Xft settings
 
 
-Xft.dpi:		192
-Xft.autohint:		0
-Xft.lcdfilter:		lcddefault
-Xft.hintstyle:		hintnone
-Xft.hinting:		0
-Xft.antialias:		1
-Xft.rgba:		rgb
+Xft.dpi:            192
+Xft.autohint:       0
+Xft.lcdfilter:      lcddefault
+Xft.hintstyle:      hintnone
+Xft.hinting:        0
+Xft.antialias:      1
+Xft.rgba:           rgb
 
 
 ! xterm settings
 
 
-xterm*termName:			xterm-256color
-xterm*saveLines:		4096
-xterm*selectToClipboard:	on
+xterm*termName:             xterm-256color
+xterm*saveLines:            4096
+xterm*selectToClipboard:    on
 
 
 ! URXVT settings
 
 
-URxvt*font: 			xft:Fira Code:size=11:antialias=true
-URxvt*boldFont: 		xft:Fira Code:bold:size=11:antialias=true
-
-URxvt.depth:			32
-URxvt.background:		rgba:0000/0000/0000/cccc	
-URxvt.loginShell:		true
-URxvt*transparent:		true
-URxvt*shading:			40
-URxvt*fading:  			30
-URxvt*scrollBar:		false
-URxvt*scrollBar_right:		false
-URxvt*transpscrollbar:		false
-URxvt*saveLines:		32767
-URxvt*perl-ext-common:		...,tabbed,...
-URxvt*tabbed.tabbar-fg:		2
-URxvt*tabbed.tabbar-bg: 	0
-URxvt*tabbed.tab-fg: 		3
-URxvt*tabbed.tab-bg: 		0
+URxvt*font:             xft:Fira Code:size=11:antialias=true
+URxvt*boldFont:         xft:Fira Code:bold:size=11:antialias=true
+URxvt.depth:                        32
+URxvt.background:                   rgba:0000/0000/0000/cccc    
+URxvt.loginShell:                   true
+URxvt*transparent:                  true
+URxvt*shading:                      40
+URxvt*fading:                       30
+URxvt*scrollBar:                    false
+URxvt*scrollBar_right:              false
+URxvt*transpscrollbar:              false
+URxvt*saveLines:                    32767
+URxvt*perl-ext-common:              default,matcher,tabbedex
+URxvt*url-launcher:                 dwb
+URxvt*matcher.button:               1
+URxvt*colorUL:                      #4682B4
+URxvt*tabbed.tabbar-fg:             2
+URxvt*tabbed.tabbar-bg:             0
+URxvt*tabbed.tab-fg:                2
+URxvt*tabbed.tab-bg:                0
+URxvt*tabbed.autohide:              no
+URxvt*tabbed.new-button:            no
+URxvt*tabbed.title:                 yes
+URxvt.keysym.Control-t:             perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab:           perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-Tab:     perl:tabbedex:prev_tab
 
 ! Color settings
 

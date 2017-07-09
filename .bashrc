@@ -16,7 +16,7 @@ alias ls='ls --color=auto'
 # 0;35m   Purple
 # 0;36m   Cyan
 # 0;37m   White
-PS1='\[\e[1;31m\]\u@\h \w ->\n\[\e[1;32m\] \@ \d\$\[\e[m\] '
+PS1='\[\e[1;32m\]\u@\h \w ->\n\[\e[0;32m\] \@ \d\$\[\e[m\] '
 
 BASE16_SHELL=$HOME/.config/base16-shell/
 [ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"

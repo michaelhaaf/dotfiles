@@ -10,22 +10,14 @@ Xft.antialias:      1
 Xft.rgba:           rgb
 
 
-! xterm settings
-
-
-xterm*termName:             xterm-256color
-xterm*saveLines:            4096
-xterm*selectToClipboard:    on
-
-
 ! URXVT settings
 
 
 URxvt*font:             xft:Fira Code:size=11:antialias=true
 URxvt*boldFont:         xft:Fira Code:bold:size=11:antialias=true
-URxvt.depth:                        32
-URxvt.background:                   rgba:0000/0000/0000/cccc    
-URxvt.loginShell:                   true
+URxvt*depth:                        32
+URxvt*background:                   rgba:0000/0000/0000/cccc    
+URxvt*loginShell:                   true
 URxvt*transparent:                  true
 URxvt*shading:                      40
 URxvt*fading:                       30
@@ -44,9 +36,11 @@ URxvt*tabbed.tab-bg:                0
 URxvt*tabbed.autohide:              no
 URxvt*tabbed.new-button:            no
 URxvt*tabbed.title:                 yes
-URxvt.keysym.Control-t:             perl:tabbedex:new_tab
-URxvt.keysym.Control-Tab:           perl:tabbedex:next_tab
-URxvt.keysym.Control-Shift-Tab:     perl:tabbedex:prev_tab
+URxvt*keysym.Control-t:             perl:tabbedex:new_tab
+URxvt*keysym.Control-Tab:           perl:tabbedex:next_tab
+URxvt*keysym.Control-Shift-Tab:     perl:tabbedex:prev_tab
+URxvt*iso14755:                     False
+URxvt*iso14755_52:                  False
 
 ! Color settings
 
@@ -106,3 +100,15 @@ URxvt.keysym.Control-Shift-Tab:     perl:tabbedex:prev_tab
 *.color19:      base02
 *.color20:      base04
 *.color21:      base06
+
+
+! ------------------------------------------------------------------------------
+! ROFI Color theme
+! ------------------------------------------------------------------------------
+rofi.color-enabled: true
+rofi.color-window: #CC002b37, #CC002b37, #CC003642
+rofi.color-normal: #CC002b37, #CC819396, #CC002b37, #CC003642, #CC819396
+rofi.color-active: #CC002b37, #CC008ed4, #CC002b37, #CC003642, #CC008ed4
+rofi.color-urgent: #CC002b37, #CCda4281, #CC002b37, #CC003642, #CCda4281
+!rofi.color-window: argb: EE000000, argb: EE000000, argb: EE000000
+!rofi.color-normal: argb: 00000000, #DEDEDE, argb: 00000000, #DEDEDE

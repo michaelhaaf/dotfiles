@@ -57,7 +57,7 @@ myTerminal = "urxvt"
 myScreensaver = "i3lock -u -i ~/Documents/2017/Miscellany/where_tahrs_live_scaled.png"
 mySelectScreenshot = "scrot -s"
 myScreenshot = "scrot"
-myLauncher = "rofi -show run"
+myLauncher = "rofi -font 'sans-serif 36' -show run"
 
 ------------------------------------------------------------------------
 

@@ -1,22 +1,39 @@
 [colors]
 sixty		= #00000000
 thirty		= #cc333333
-ten		= #cc222222
+ten		    = #cc222222
 
-foreground	= #ccffffff
+foreground	    = #ccffffff
 foreground-alt	= #ccffffff
-alert		= #d6878787
+alert		    = #d6878787
 
-black0		= #2f1e2e
-black1		= #776e71
-red		= #ef6155
-green		= #48b685
-yellow		= #fec418
-blue 		= #06b6ef
-magenta 	= #815ba4
-cyan		= #5bc4bf
-white0		= #a39e9b
-white1		= #e7e9db
+blackTransp		= #77000000
+black1	    	= #776e71
+red	        	= #ef6155
+green	    	= #48b685
+yellow	    	= #fec418
+blue 	    	= #06b6ef
+magenta     	= #815ba4
+cyan	    	= #5bc4bf
+white0	    	= #a39e9b
+white1	    	= #e7e9db
+
+base00          = #772e2a31
+base01          = #774a464d
+base02          = #77666369
+base03          = #77838085
+base04          = #779f9da2
+base05          = #77bcbabe
+base06          = #77d8d7da
+base07          = #77f5kf4f7
+base08          = #77d8137f
+base09          = #77d65407
+base0A          = #77dc8a0e
+base0B          = #7717ad98
+base0C          = #77149bda
+base0D          = #77796af5
+base0E          = #77bb60ea
+base0F          = #77c720ca
 
 
 ##############################
@@ -28,11 +45,11 @@ width = 100%
 height = 60
 
 line-color = ${colors.sixty}
-line-size = 0
+line-size = 5
 
 border-top = 1
 border-top-color = ${colors.thirty}
-background = ${colors.sixty}
+background = ${colors.blackTransp}
 foreground = ${colors.foreground}
 
 spacing = 2
@@ -41,13 +58,13 @@ padding-right = 2
 module-margin-left = 2
 module-margin-right = 2
 
-font-0 = Fira Sans:size=16;-1
+font-0 = Fira Code:size=16;-1
 font-2 = FontAwesome:size=22;0
 font-1 = MaterialIcons:size=22;0
 
-modules-left = powermenu
+modules-left = cpu
 modules-center = ewmh
-modules-right = wireless-network volume battery date
+modules-right = vpn wireless-network volume battery date powermenu
 
 ##############################
 ##############################
@@ -74,10 +91,10 @@ time = %l:%M %p
 label = %date%, %time%
 
 format-prefix-foreground = ${colors.foreground-alt}
-# format-underline = ${colors.magenta}
+#format-underline = ${colors.magenta}
 
 format-padding = 2
-# format-background = ${colors.ten}
+format-background = ${colors.base0B}
 format-foreground = ${colors.foreground-alt}
 
 ##############################
@@ -89,17 +106,15 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <animation-charging> <label-charging>
-format-discharging = <ramp-capacity> <label-discharging>
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
 
 label-full =
-label-charging = %percentage%
-label-discharging = %percentage%
+label-charging = %percentage%%
+label-discharging = %percentage%%
 
 ramp-capacity-0 = 
-ramp-capacity-0-foreground = ${colors.alert}
 ramp-capacity-1 = 
-ramp-capacity-1-foreground = ${colors.alert}
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
@@ -156,7 +171,7 @@ master-mixer = Master
 format-volume = <label-volume> 
 ; or <bar-volume>
 
-label-volume =  %percentage%
+label-volume =  %percentage%%
 label-volume-foreground = ${root.foreground}
 label-muted =  0%
 
@@ -185,8 +200,7 @@ bar-volume-empty-foreground =
 type = custom/menu
 
 format = <menu> <label-toggle>
-format-underline = ${colors.ten}
-format-padding = 2
+format-padding = 0
 
 menu-0-0 = Shutdown
 menu-0-0-exec = shutdown now
@@ -206,11 +220,11 @@ label-separator = |
 
 [module/wireless-network]
 type = internal/network
-interface = wlp58s0
+interface = wlan0
 interval = 3.0
-ping-interval = 10
 
-format-connected = <ramp-signal> <label-connected>
+format-background = ${colors.base0B}
+format-connected = <ramp-signal><label-connected>
 label-connected = %essid%
 label-disconnected =  
 label-disconnected-foreground = #66
@@ -220,15 +234,49 @@ ramp-signal-1 = 
 ramp-signal-2 = 
 ramp-signal-3 = 
 ramp-signal-4 = 
-
-animation-packetloss-0 = 
-animation-packetloss-0-foreground = #ffa64c
-animation-packetloss-1 = 
-animation-packetloss-1-foreground = ${bar/top.foreground}
-animation-packetloss-framerate = 500
+ramp-signal-5 = 
 
 ##############################
 ##############################
 
+[module/cpu]
+type = internal/cpu
 
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
 
+Additional formatting
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+format = <label> <ramp-coreload>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = CPU %percentage%%
+
+ramp-coreload-0 = ▁
+ramp-coreload-1 = ▂
+ramp-coreload-2 = ▃
+ramp-coreload-3 = ▄
+ramp-coreload-4 = ▅
+ramp-coreload-5 = ▆
+ramp-coreload-6 = ▇
+ramp-coreload-7 = █
+
+##############################
+##############################
+
+[module/vpn]
+type = custom/script
+exec = pgrep openvpn
+interval = 5
+label= VPN
+format-background = ${colors.base0C}
+format-padding = 2

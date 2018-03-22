@@ -6,6 +6,9 @@
 alias config='/usr/bin/git --git-dir=/home/michael/.cfg/ --work-tree=/home/michael'
 
 alias ls='ls --color=auto'
+alias vpnFuckOff='sudo pkill openvpn'
+alias vpnRestart='systemctl start openvpn-client@mullvad.service'
+alias helloInternet='ping archlinux.org'
 
 # PS1='[\u@\h \W]\$ '
 # 0;30m   Black

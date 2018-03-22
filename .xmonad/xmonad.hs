@@ -1,6 +1,7 @@
 import XMonad
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageDocks (ToggleStruts(..),avoidStruts,docks,manageDocks)
+import XMonad.Layout.IndependentScreens
 import XMonad.Layout.Spacing
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Hooks.SetWMName
@@ -9,13 +10,16 @@ import XMonad.Util.EZConfig
 import System.IO
 
 import qualified Data.Map as M
+import qualified XMonad.StackSet as W
 
 ------------------------------------------------------------------------
 
 main :: IO()
 main = do 
-	xmonad $ docks $ ewmh $ def
-		{
+	xmonad $ docks $ ewmh $ conf
+
+conf = def {          
+          workspaces         = myWorkspaces,
 		  terminal           = myTerminal,
 		  borderWidth        = 0,
 		  modMask            = mod4Mask,
@@ -25,6 +29,8 @@ main = do
 		} `additionalKeys` myKeys
 
 ------------------------------------------------------------------------
+
+myWorkspaces = withScreens 2 ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 myLayoutHook = tiled ||| Mirror tiled ||| Full
 	where
@@ -50,14 +56,26 @@ myKeys =
 	 -- TODO write TogglePolybar .sh
 	 -- ((mod4Mask .|. mod1Mask, xK_o), swapNextScreen),
 	 -- ((mod4Mask .|. shiftMask, xK_o), shiftNextScreen)
-	]
+	] ++
+    [
+     -- workspaces are distinct by screen
+     ((m .|. mod4Mask, k), windows $ onCurrentScreen f i)
+           | (i, k) <- zip (workspaces' conf) [xK_1 .. xK_9]
+           , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+    ] ++
+    [
+     -- swap screen order
+     ((m .|. mod4Mask, key), screenWorkspace sc >>= flip whenJust (windows . f))
+           | (key, sc) <- zip [xK_w, xK_e, xK_r] [1,0,2]
+           , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]
+    ]
 
 myTerminal = "urxvt"
 -- myScreensaver = "/usr/bin/x-screensaver-command --lock"
 myScreensaver = "i3lock -u -i ~/Documents/2017/Miscellany/where_tahrs_live_scaled.png"
 mySelectScreenshot = "scrot -s"
 myScreenshot = "scrot"
-myLauncher = "rofi -font 'sans-serif 36' -show run"
+myLauncher = "rofi -font 'sans-serif 48' -show run"
 
 ------------------------------------------------------------------------
 

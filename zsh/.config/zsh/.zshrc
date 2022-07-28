@@ -1,18 +1,9 @@
-export XDG_CONFIG_HOME="$HOME/.config";
-export XDG_CACHE_HOME="$HOME/.cache";
-export XDG_DATA_HOME="$HOME/.local/share";
-export XDG_STATE_HOME="$HOME/.local/share";
-
-export DOTFILES="$HOME/dotfiles"
-export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
-
-export ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
-export ZSH_CACHE_DIR="$ZSH/cache"
-export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump"
-
 export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=1000000
 export SAVEHIST=1000000
+
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 # The meaning of these options can be found in man page of `zshoptions`.
 setopt HIST_IGNORE_ALL_DUPS  
@@ -20,6 +11,8 @@ setopt HIST_SAVE_NO_DUPS
 setopt HIST_REDUCE_BLANKS  
 setopt INC_APPEND_HISTORY_TIME 
 setopt EXTENDED_HISTORY  
+
+setopt NO_BEEP
 
 ZSH_THEME="archcraft"
 HYPHEN_INSENSITIVE="true"

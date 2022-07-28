@@ -1,0 +1,2 @@
+#!/bin/bash
+pkill -f picom || picom --experimental-backends --blur-method dual_kawase -b

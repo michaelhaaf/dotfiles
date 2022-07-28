@@ -1,0 +1,6 @@
+#!/bin/bash
+# inspired by https://my-take-on.tech/2020/07/03/some-tricks-for-sxhkd-and-bspwm/#show-a-help-menu-using-rofi
+
+awk '/^[a-z]/ && last {print "<small>",$0,"\t",last,"</small>"} {last=""} /^#/{last=$0}' ~/.config/sxhkd/sxhkdrc |
+    column -t -s $'\t' |
+    rofi -dmenu -i -markup-rows -no-show-icons -width 1000 -lines 15 -yoffset 40

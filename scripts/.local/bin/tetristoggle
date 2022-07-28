@@ -1,0 +1,5 @@
+#!/bin/bash
+set -ue
+device=$(find /dev/v4l/by-id/ \( -name "*AV*" -and -name "*index0" \))
+kill -15 "$(pgrep -f "$device")" > /dev/null 2>&1 || \
+    mpv --geometry=+0+0 --autofit=50% --demuxer-lavf-format=video4linux2 --demuxer-lavf-o-set=input_format=mjpeg av://v4l2:"$device" --profile=low-latency

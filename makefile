@@ -6,4 +6,3 @@ delete:
 
 overwrite:
 	        stow --adopt --verbose --target=$$HOME --stow */
-

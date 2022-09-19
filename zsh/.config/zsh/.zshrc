@@ -17,8 +17,8 @@ setopt NO_BEEP
 ZSH_THEME="archcraft"
 HYPHEN_INSENSITIVE="true"
 
-zstyle ':omz:update' mode reminder  
-# zstyle ':omz:update' mode disabled 
+# zstyle ':omz:update' mode reminder  
+zstyle ':omz:update' mode disabled 
 # zstyle ':omz:update' mode auto    
 # zstyle ':omz:update' frequency 13
 
@@ -32,8 +32,17 @@ ENABLE_CORRECTION="true"
 # HIST_STAMPS="mm/dd/yyyy"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-plugins=(git fzf pass)
+plugins=(
+  git fzf pass vi-mode 
+  ripgrep ag colored-man-pages 
+  zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
+
+VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+VI_MODE_SET_CURSOR=true
+
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # User configuration
 
@@ -67,13 +76,22 @@ rehash_precmd() {
 
 add-zsh-hook -Uz precmd rehash_precmd
 
+# nvim
+alias vim="nvim"
+alias vi="nvim"
+alias v="nvim"
+alias vimdiff='nvim -d'
+
+# neomutt
+alias nm='neomutt'
+
 # omz
-alias zshconfig="alacritty -e vim $ZDOTDIR/.zshrc"
-alias ohmyzsh="alacritty -e ranger $ZSH"
+alias zshconfig="$TERMINAL -e vim $ZDOTDIR/.zshrc"
+alias ohmyzsh="$TERMINAL -e ranger $ZSH"
 
 # ls
 alias l='ls -lh'
-alias ll='ls -lah'
+alias ll='exa -lahF'
 alias la='ls -A'
 alias lm='ls -m'
 alias lr='ls -R'
@@ -85,3 +103,22 @@ alias gi='git init'
 alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push origin master'
+
+# convenience program aliases
+useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.118    0.79 Safari/537.1 Lynx"
+alias lynx="lynx --useragent='$useragent'"
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias yt="youtube-dl --add-metadata -ic" # Download video link
+alias yta="youtube-dl --add-metadata -xic" # Download audio only
+alias ccat="highlight --out-format=ansi" # color cat
+alias journalctl='journalctl --utc -o short-precise --no-hostname'
+alias x2goclient="x2goclient --home=$HOME/.config"
+alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias icat="kitty +kitten icat --align=left"
+alias vwiki='nvim -c VimwikiIndex'
+alias vw='nvim -c VimwikiIndex'
+alias mbsync="mbsync -c \"$XDG_CONFIG_HOME/isync/mbsyncrc\""
+alias imapfilter="imapfilter -c \"$XDG_CONFIG_HOME/imapfilter/config.lua\""
+
+# ssh
+[[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"

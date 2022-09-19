@@ -22,43 +22,43 @@
     <primaryMonitor>Mouse</primaryMonitor>
   </placement>
   <theme>
-    <name>Arc-Dark</name>
-    <titleLayout>DLIMC</titleLayout>
+    <name>Juno-palenight</name>
+    <titleLayout>MLC</titleLayout>
     <keepBorder>no</keepBorder>
     <animateIconify>yes</animateIconify>
     <font place="ActiveWindow">
-      <name>JetBrains Mono</name>
-      <size>9</size>
+      <name>Iosevka</name>
+      <size>12</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveWindow">
-      <name>JetBrains Mono</name>
-      <size>9</size>
+      <name>Iosevka</name>
+      <size>12</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuHeader">
-      <name>JetBrains Mono</name>
-      <size>9</size>
+      <name>Iosevka</name>
+      <size>12</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
     <font place="MenuItem">
-      <name>JetBrains Mono</name>
-      <size>9</size>
+      <name>Iosevka</name>
+      <size>12</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
     <font place="ActiveOnScreenDisplay">
-      <name>JetBrains Mono</name>
-      <size>9</size>
+      <name>Iosevka</name>
+      <size>12</size>
       <weight>Bold</weight>
       <slant>Normal</slant>
     </font>
     <font place="InactiveOnScreenDisplay">
-      <name>JetBrains Mono</name>
-      <size>9</size>
+      <name>Iosevka</name>
+      <size>12</size>
       <weight>Normal</weight>
       <slant>Normal</slant>
     </font>
@@ -241,7 +241,7 @@
         <y>-5</y>
       </action>
     </keybind>
-    <keybind key="A-z">
+    <keybind key="W-z">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>15</x>
@@ -250,7 +250,7 @@
         <width>32%</width>
       </action>
     </keybind>
-    <keybind key="A-x">
+    <keybind key="W-x">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>34%</x>
@@ -259,7 +259,7 @@
         <width>32%</width>
       </action>
     </keybind>
-    <keybind key="A-c">
+    <keybind key="W-c">
       <action name="Unmaximize"/>
       <action name="MoveResizeTo">
         <x>-17</x>
@@ -479,12 +479,12 @@
     <!-- Apps -->
     <keybind key="W-Return">
       <action name="Execute">
-        <command>alacritty</command>
+        <command>kitty</command>
       </action>
     </keybind>
     <keybind key="W-t">
       <action name="Execute">
-        <command>furminal</command>
+        <command>kitty --start-as fullscreen</command>
       </action>
     </keybind>
     <keybind key="W-f">
@@ -515,12 +515,12 @@
     </keybind>
     <keybind key="W-m">
       <action name="Execute">
-        <command>~/.config/openbox/rofi/bin/music</command>
+        <command>~/.config/openbox/rofi/bin/powermenu</command>
       </action>
     </keybind>
-    <keybind key="W-x">
+    <keybind key="W-v">
       <action name="Execute">
-        <command>~/.config/openbox/rofi/bin/powermenu</command>
+        <command>~/.config/openbox/rofi/bin/music</command>
       </action>
     </keybind>
     <keybind key="W-s">
@@ -546,17 +546,27 @@
     </keybind>
     <keybind key="C-A-v">
       <action name="Execute">
-        <command>alacritty -e vim</command>
+        <command>kitty -e vim</command>
       </action>
     </keybind>
     <keybind key="C-A-r">
       <action name="Execute">
-        <command>alacritty -e ranger</command>
+        <command>kitty -e ranger</command>
       </action>
     </keybind>
     <keybind key="C-A-h">
       <action name="Execute">
-        <command>alacritty -e htop</command>
+        <command>kitty -e htop</command>
+      </action>
+    </keybind>
+    <keybind key="C-A-p">
+      <action name="Execute">
+        <command>~/.config/openbox/rofi/bin/rofi-pass</command>
+      </action>
+    </keybind>
+    <keybind key="C-S-A-p">
+      <action name="Execute">
+        <command>~/.config/openbox/rofi/bin/rofi-pass-insert</command>
       </action>
     </keybind>
     <!-- Lockscreen -->
@@ -579,9 +589,6 @@
       <action name="Execute">
         <command>xkill</command>
       </action>
-    </keybind>
-    <keybind key="W-c">
-      <action name="Close"/>
     </keybind>
     <keybind key="W-q">
       <action name="Close"/>

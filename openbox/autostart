@@ -7,7 +7,7 @@
 killall -9 xfsettingsd picom polybar mpd dunst ksuperkey xfce4-power-manager
 
 ## Restore Wallpaper
-nitrogen --restore
+nitrogen --restore &
 
 ## xfce4-settings daemon
 xfsettingsd &
@@ -42,6 +42,12 @@ exec thunar --daemon &
 ksuperkey -e 'Super_L=Alt_L|F1' &
 ksuperkey -e 'Super_R=Alt_L|F1' &
 
-## Help-App-Run-Once
-help-and-tips &
-sed -i -e '/## Help-App-Run-Once/Q' "$HOME"/.config/openbox/autostart
+## Sensible key speed
+bash -c 'sleep 2 && xset r rate 300 50' &
+
+## Redshift
+[[ -z "$(pgrep redshift)" ]] && exec redshift -l 45:-73 &
+
+## Remap esc/caps
+setxkbmap -option caps:escape &
+setxkbmap -option terminate:ctrl_atl_bksp &

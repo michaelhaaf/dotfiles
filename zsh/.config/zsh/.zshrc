@@ -14,12 +14,12 @@ setopt EXTENDED_HISTORY
 
 setopt NO_BEEP
 
-ZSH_THEME="archcraft"
+ZSH_THEME="random"
 HYPHEN_INSENSITIVE="true"
 
 # zstyle ':omz:update' mode reminder  
-zstyle ':omz:update' mode disabled 
-# zstyle ':omz:update' mode auto    
+# zstyle ':omz:update' mode disabled 
+zstyle ':omz:update' mode auto    
 # zstyle ':omz:update' frequency 13
 
 # DISABLE_MAGIC_FUNCTIONS="true"

@@ -8,6 +8,7 @@ export DOTFILES="$HOME/dotfiles"
 
 export PATH="$HOME/.local/bin:$PATH"
 
+export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export WAYLAND_DISPLAY=""

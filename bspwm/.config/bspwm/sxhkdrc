@@ -27,6 +27,10 @@ alt + F1
 super + n
 	nmd
 
+# Audio Control
+super + a
+  pavucontrol
+
 # Rofi Themes Menu
 ctrl + alt + t
 	sh ~/.config/bspwm/rofi/bin/themes
@@ -34,6 +38,14 @@ ctrl + alt + t
 # Rofi Menus/Applets
 super + {w,m,x,r,s}
 	sh ~/.config/bspwm/rofi/bin/{windows,mpd,powermenu,asroot,screenshot}
+
+# Hotkeys, Password Manager
+super + {slash, p, shift + p, a}
+	sh ~/.config/bspwm/rofi/bin/{sxhkd-help,rofi-pass,rofi-pass --insert}
+
+# Bluetooth, Camera control, Compositor
+super + alt + {b, t, w, r, c}
+	sh ~/.config/bspwm/rofi/bin/{rofi-bluetooth,tetristoggle,camtoggle,camreset,compositoggle}
 
 ##---------- Applications ----------##
 
@@ -46,7 +58,7 @@ ctrl + alt + {v,r,h}
 	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger,htop}
 
 # Color Picker
-super + p
+super + alt + p
 	color-gpick
 
 # Lockscreen
@@ -55,16 +67,16 @@ ctrl + alt + l
 
 ##---------- System Keys ----------##
 
-# Take a screenshot
+# Take screenshot
 Print
 	takeshot --now
 	
-# Take screenshot in 5 second
-alt + Print	
+# Take screenshot in five seconds
+alt + Print
 	takeshot --in5
 
-# Take screenshot in 10 second
-shift + Print	
+# Take screenshot in ten seconds
+shift + Print
 	takeshot --in10
 
 # Take screenshot of active window
@@ -157,6 +169,10 @@ super + {Tab,grave}
 super + {_,shift + }{1-8}
 	bspc {desktop -f,node -d} '^{1-8}'
 
+# Hide/Unhide Window
+super + shift + i
+	bspwinmask		
+
 # Expanding windows
 super + control + {Left,Right,Up,Down}
 	bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
@@ -166,11 +182,21 @@ super + alt + {Left,Right,Up,Down}
 	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
 	
 ## Move floating windows
-alt + shift + {Left,Down,Up,Right}
-	bspc node -v {-20 0,0 20,0 -20,20 0}
+super + shift + {Left,Down,Up,Right}
+	bspc node -v {-50 0,0 50,0 -50,50 0}
 
-# Hide/Unhide Window
-super + shift + i
-	bspwinmask		
+##### NUMPAD #####
+# placeholders for extra numpad buttons
+super + KP_{Divide,Multiply,Subtract,Add,Decimal,Enter,Separator}
+    notify-send {0-9,Divide,Multiply,Subtract,Add,Decimal,Enter,Separator}
+
+# windows: numpad numbers can be used the same as top row numbers
+super + {_,shift + }KP_{Home,Up,Prior,Left,Begin,Right,End,Down,Next,Insert}
+	bspc {desktop -f,node -d} '^{7,8,9,4,5,6,1,2,3,10}'
+
+# preselect the ratio: numpad numbers can be used the same as top row numbers
+super + ctrl + KP_{Home,Up,Prior,Left,Begin,Right,End,Down,Next}
+	bspc node -o 0.'{7,8,9,4,5,6,1,2,3}'
+
 
 ##---------- EOF ----------##

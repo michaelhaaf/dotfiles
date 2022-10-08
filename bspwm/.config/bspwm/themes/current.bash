@@ -1,3 +1,25 @@
+# Base16 Rose Pine Moon
+
+black="#232136"
+brightblack="#393552"
+
+white="#e0def4"
+brightwhite="#d9d7e1"
+
+red="#eb6f92"
+brown="#f6c177"
+green="#ea9a97"
+blue="#3e8fb0"
+cyan="#9ccfd8"
+magenta="#c4a7e7"
+
+brightred="#b4637a"
+yellow="#ea9d34"
+brightgreen="#d7827e"
+brightblue="#286983"
+brightcyan="#56949f"
+brightmagenta="#907aa9"
+
 # -----------------------------------------------------------------------------
 # Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
 # Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
@@ -9,26 +31,26 @@
 wallpaper='/usr/share/backgrounds/pastel.png'
 
 # Special
-background='#222D57'
-foreground='#EBDDEB'
-cursor='#EBDDEB'
+background="${black}"
+foreground="${white}"
+cursor="${white}"
 
 # Colors
-color0='#36416B'
-color1='#f0719b'
-color2='#5af7b0'
-color3='#ffa56b'
-color4='#57c7ff'
-color5='#c792ea'
-color6='#89ddff'
-color7='#eeffff'
-color8='#414B75'
-color9='#f02e6e'
-color10='#2ce592'
-color11='#ff8537'
-color12='#1da0e2'
-color13='#a742ea'
-color14='#47bae8'
-color15='#dee6e7'
+color0="${black}"
+color1="${red}"
+color2="${green}"
+color3="${brown}"
+color4="${cyan}"
+color5="${magenta}"
+color6="${blue}"
+color7="${white}"
+color8="${brightblack}"
+color9="${brightred}"
+color10="${brightgreen}"
+color11="${yellow}"
+color12="${brightcyan}"
+color13="${brightmagenta}"
+color14="${brightblue}"
+color15="${brightwhite}"
 
 # Don't Delete This File

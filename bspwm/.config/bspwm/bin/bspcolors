@@ -100,7 +100,7 @@ bsprofi () {
 	    background:			${BACKGROUND};
 	    foreground:			${FOREGROUND};
 	    selected:			${BLUE};
-	    highlight:			${YELLOW};
+	    highlight:			${ALTMAGENTA};
 	    urgent:				${RED};
 	    on:					${GREEN};
 	    off:				${RED};

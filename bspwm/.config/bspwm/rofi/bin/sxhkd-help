@@ -1,0 +1,6 @@
+#!/bin/bash
+# inspired by https://my-take-on.tech/2020/07/03/some-tricks-for-sxhkd-and-bspwm/#show-a-help-menu-using-rofi
+
+awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' ~/.config/bspwm/sxhkdrc | grep -v "numpad" |
+    column -t -s $'\t' |
+    rofi -theme "/home/michael/.config/bspwm/rofi/themes/help.rasi" -dmenu -i 

@@ -7,15 +7,15 @@ DIR="$HOME/.config/bspwm"
 rofi_cmd="rofi -theme $DIR/rofi/themes/asroot.rasi"
 
 # Apps
-terminal=" Alacritty"
+terminal=" Kitty"
 files=" Thunar"
 editor=" Geany"
 clifm=" Ranger"
-vim=" Vim"
+vim=" Neovim"
 
 # Variable passed to rofi
 options="$terminal\n$files\n$editor\n$clifm\n$vim"
-term='alacritty --class alacritty-float,alacritty-float --config-file /root/.config/bspwm/alacritty/alacritty.yml'
+term='kitty --class kitty-float,kitty-float'
 
 # Functions
 
@@ -31,9 +31,9 @@ case $chosen in
         bsproot geany
         ;;
     $clifm)
-        bsproot "$term -e ranger"
+        bsproot "$term ranger"
         ;;
     $vim)
-        bsproot "$term -e vim"
+        bsproot "$term nvim"
         ;;
 esac

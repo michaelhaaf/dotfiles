@@ -89,7 +89,7 @@ bspc wm --adopt-orphans
 bspc rule -r *:*
 
 ## 1 > terminal (always open terminal on workspace-1)
-bspc rule -a Alacritty desktop='^1' follow=on focus=on
+bspc rule -a kitty desktop='^1' follow=on focus=on
 bspc rule -a Xfce4-terminal desktop='^1' follow=on focus=on
 
 ## 2 > web (always open web browser on workspace-2)
@@ -133,10 +133,15 @@ for i in ${settings[@]}; do
    bspc rule -a $i desktop='^8' state=floating follow=on focus=on; done
 
 ## Always Floating Apps
-declare -a floating=(alacritty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
+declare -a floating=(kitty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
 Viewnior feh Nm-connection-editor)
 for i in ${floating[@]}; do
    bspc rule -a $i state=floating follow=on focus=on; done
+
+## Always Fullscreen Apps
+declare -a floating=(kitty-full)
+for i in ${floating[@]}; do
+   bspc rule -a $i state=fullscreen follow=on focus=on; done
 
 bspc rule -a Conky state=floating manage=off
 bspc rule -a stalonetray state=floating manage=off

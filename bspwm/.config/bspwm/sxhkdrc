@@ -5,7 +5,7 @@
 
 ##---------- Keybindings for bspwm ----------##
 
-# Terminal (alacritty)
+# Terminal (kitty)
 super + Return
 	bspterm
 
@@ -43,9 +43,13 @@ super + {w,m,x,r,s}
 super + {slash, p, shift + p, a}
 	sh ~/.config/bspwm/rofi/bin/{sxhkd-help,rofi-pass,rofi-pass --insert}
 
-# Bluetooth, Camera control, Compositor
+# Bluetooth, Camera control
 super + alt + {b, t, w, r, c}
-	sh ~/.config/bspwm/rofi/bin/{rofi-bluetooth,tetristoggle,camtoggle,camreset,compositoggle}
+	sh ~/.config/bspwm/rofi/bin/{rofi-bluetooth,tetristoggle,camtoggle,camreset}
+
+# Toggle Compositor
+super + alt + c
+  sh ~/.config/bspwm/bin/bspcomp
 
 ##---------- Applications ----------##
 
@@ -55,7 +59,7 @@ super + shift + {f,w,e}
 
 # Terminal Apps
 ctrl + alt + {v,r,h}
-	alacritty --config-file ~/.config/bspwm/alacritty/alacritty.yml -e {vim,ranger,htop}
+	kitty {nvim,ranger,htop}
 
 # Color Picker
 super + alt + p

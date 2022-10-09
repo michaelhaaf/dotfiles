@@ -15,7 +15,6 @@ export WAYLAND_DISPLAY=""
 export ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
 export ZSH_CACHE_DIR="$ZSH/cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc

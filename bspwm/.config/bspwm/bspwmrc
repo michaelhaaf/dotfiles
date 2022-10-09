@@ -6,6 +6,7 @@
 ## BSPWM config file for Archcraft
 
 ## General ---------------------------------------------------#
+source "$HOME/.zshenv"
 
 ## Bspwm config directory
 BSPDIR="$HOME/.config/bspwm"
@@ -176,7 +177,7 @@ xsetroot -cursor_name left_ptr
 feh --no-fehbg --bg-fill "$CURRENT_WALLPAPER"
 
 # Start mpd
-exec mpd &
+# exec mpd "${HOME}"/.config/mpd/mpd.conf &
 
 # Sensible DAS and capslock switch
 xset r rate 300 50

@@ -58,7 +58,6 @@ CURRENT_SRATIO='0.50'
 workspaces() {
 	name=1
 	for monitor in `bspc query -M`; do
-		#bspc monitor ${monitor} -n "$name" -d 'I' 'II' 'III' 'IV' 'V' 'VI' 'VII' 'VIII'
 		bspc monitor ${monitor} -n "$name" -d '' '' '' '' '' '' '' ''
 		let name++
 	done
@@ -115,7 +114,7 @@ for i in ${office[@]}; do
    bspc rule -a $i desktop='^5' follow=on focus=on; done
 
 ## 6 > communication (always open communication apps on workspace-6)
-declare -a comm=(Thunderbird TelegramDesktop Hexchat)
+declare -a comm=(Thunderbird TelegramDesktop Hexchat Discord Signal)
 for i in ${comm[@]}; do
    bspc rule -a $i desktop='^6' follow=on focus=on; done
 
@@ -126,6 +125,7 @@ for i in ${media[@]}; do
 
 ## 8 > system (always open system apps on workspace-8)
 bspc rule -a 'VirtualBox Manager' desktop='^8' follow=on focus=on
+bspc rule -a 'virt-manager' desktop='^8' follow=on focus=on
 bspc rule -a GParted desktop='^8' follow=on focus=on
 declare -a settings=(Lxappearance Lxtask Lxrandr Arandr \
 System-config-printer.py Pavucontrol Exo-helper-1 \
@@ -143,6 +143,11 @@ for i in ${floating[@]}; do
 declare -a floating=(kitty-full)
 for i in ${floating[@]}; do
    bspc rule -a $i state=fullscreen follow=on focus=on; done
+
+## Always Pseudo Apps
+declare -a floating=(Discord Signal)
+for i in ${floating[@]}; do
+   bspc rule -a $i state=pseudo follow=on focus=on; done
 
 bspc rule -a Conky state=floating manage=off
 bspc rule -a stalonetray state=floating manage=off
@@ -183,6 +188,11 @@ feh --no-fehbg --bg-fill "$CURRENT_WALLPAPER"
 xset r rate 300 50
 setxkbmap -option caps:escape
 setxkbmap -option terminate:ctrl_alt_bksp
+
+# Mice bindings
+bspc config pointer_action1 move
+bspc config pointer_action2 resize_side
+bspc config pointer_action2 resize_corner
 
 # Start bspwm scripts
 bspcolors

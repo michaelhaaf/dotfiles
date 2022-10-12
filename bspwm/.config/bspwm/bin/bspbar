@@ -59,9 +59,6 @@ launch_bar() {
 }
 
 # Execute functions
-if [[ ! -f "$RFILE" ]]; then
-	get_values
-	set_values
-	touch ${RFILE}
-fi
+get_values
+set_values
 launch_bar

@@ -303,7 +303,7 @@ icon-next-foreground = ${color.CYAN}
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 ; If you use both a wired and a wireless network, add both modules in config.
-[module/ethernet]
+[module/network]
 type = internal/network
 interface = ${system.sys_network_interface}
 
@@ -326,7 +326,7 @@ label-disconnected = "%{A1:networkmanager_dmenu &:}Offline%{A}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/network]
+[module/network2]
 type = internal/network
 interface = ${system.sys_network_interface}
 
@@ -365,6 +365,18 @@ content = ◆
 content-background = ${color.BACKGROUND}
 content-foreground = ${color.BLACK}
 content-padding = 2
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/xwindow]
+type = internal/xwindow
+
+format-prefix = "  "
+format-prefix-font = 3
+format-prefix-foreground = ${color.BLUE}
+
+label = %title:0:80:...%
+label-font = 2
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______

@@ -1,21 +1,20 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # TODO: generalize, this just makes sure rule is only applied to laptop
 [[ $(hostname) = "lattitude" ]] || exit 0
 
-pkill polybar
-
 # hardcoded laptop primary
-primary='eDP-1'
+primary='eDP1'
 
 # all other monitors
-monitors=($(xrandr -q | grep -v "${primary}" | awk '/\<connected\>/ {print $1}'))
+mapfile -t monitors < <(xrandr -q | grep -v "${primary}" | awk '/\<connected\>/ {print $1}')
 #resolutions=$(xrandr -q | grep -v "${primary}" | awk '/\<connected\>/ {getline; print $1}')
 xrandr --output "$primary" --auto  --mode 1920x1080 --primary
 
 # there's really only ever maximum two monitors connected, one in DP one in HDMI
 # the trick here is just figuring out WHICH DP or HDMI device, which is handled above.
 for monitor in "${monitors[@]}"; do
-	[[ "$monitor" =~ ^HDMI- ]] && xrandr --output "$monitor" --auto --right-of "$primary"
-	# [[ "$monitor" =~ ^DP- ]] && xrandr --output "$monitor" --auto --left-of "$primary"
+  echo "${monitor}"
+	[[ "$monitor" =~ ^HDMI ]] && xrandr --output "$monitor" --auto --right-of "$primary"
+	[[ "$monitor" =~ ^DP ]] && xrandr --output "$monitor" --auto --left-of "$primary"
 done

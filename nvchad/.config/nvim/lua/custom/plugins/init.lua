@@ -114,4 +114,13 @@ return {
       require("custom.plugins.venn").setup()
     end,
   },
+
+  -- surround 
+  ["kylechui/nvim-surround"] = {
+    tag = "*",
+    config = function()
+        require("nvim-surround").setup()
+    end,
+  },
+
 }

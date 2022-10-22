@@ -7,6 +7,7 @@ export XDG_STATE_HOME="$HOME/.local/share";
 export DOTFILES="$HOME/dotfiles"
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$PATH:$(go env GOPATH)/bin"
 
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true

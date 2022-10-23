@@ -1,8 +1,3 @@
-## Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-## Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-##
-## Keybindings config for Archcraft's BSPWM
-
 ##---------- Keybindings for bspwm ----------##
 
 # Terminal (kitty)
@@ -117,27 +112,30 @@ super + {_,shift + }c
 
 # Reload Keybindings
 super + Escape
-	pkill -USR1 -x sxhkd
+	pkill -USR1 -x sxhkd && dunstify "sxhkd: keybindings reloaded"
 
 # kill window
 ctrl + alt + Escape
-    xkill
+  xkill
 
 # Quit/Restart bspwm
 ctrl + shift + {q,r}
-	bspc {quit,wm -r}
+	bspc {quit,wm -r} && dunstify "bspwm: wm reloaded"
 	
-# Split horizontal, vertical or cancel
-super + {h,v,q}
-	bspc node -p {east,south,cancel}
+# Preselect the direction; q to cancel
+super + ctrl + {h,j,k,l,q}
+	bspc node -p {west,south,north,east,cancel}
 
 # Preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
 
-# Fullscreen or Monocle
+# Desktop: Fullscreen or Monocle
+super + m
+	bspc desktop -l next
+
+# Application: Fullscreen or Monocle
 super + f
-#	bspc desktop -l next
     bspc node -t "~"fullscreen
 
 # Toggle beetwen floating & tiled
@@ -146,20 +144,23 @@ super + space
 
 # Pseudo Tiled & tiled mode
 super + shift + space
-#super + {p,t}
     bspc node -t "~"{pseudo_tiled,tiled}
 
 # Set the node flags
 super + ctrl + {m,x,y,z}
 	bspc node -g {marked,locked,sticky,private}
 
-# Send the window to another edge of the screen
-super + {_,shift + }{Left,Down,Up,Right}
+# Focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
 # Change focus to next window, including floating window
 alt + {_,shift + }Tab
 	bspc node -f {next.local,prev.local}
+
+# Switch workspace
+super + bracket{left,right}
+	bspc desktop -f {prev.local,next.local}
 
 # Switch workspace
 ctrl + alt + {Left,Right}
@@ -169,9 +170,15 @@ ctrl + alt + {Left,Right}
 super + {Tab,grave}
 	bspc {node,desktop} -f last
 
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
 # Send focused window to another workspace
-super + {_,shift + }{0-9}
-	bspc {desktop -f,node -d} '^{0-9}'
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} '^{1-9,10}'
 
 # Hide/Unhide Window
 super + shift + i
@@ -186,7 +193,7 @@ super + alt + {Left,Right,Up,Down}
 	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
 	
 ## Move floating windows
-super + control + alt + {Left,Down,Up,Right}
+super + shift + {Left,Down,Up,Right}
 	bspc node -v {-50 0,0 50,0 -50,50 0}
 
 ##### NUMPAD #####

@@ -12,19 +12,21 @@ sink = alsa_output.pci-0000_12_00.3.analog-stereo
 
 ; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
 ; Default: true
-use-ui-max = false
+use-ui-max = true
 
 ; Interval for volume increase/decrease (in percent points)
 ; Default: 5
-interval = 5
+interval = 1
 
 format-volume = <ramp-volume> <label-volume>
 
+format-font = 3
 format-muted = <label-muted>
 format-muted-prefix = 婢
 format-muted-prefix-font = 2
 format-muted-prefix-foreground = ${color.RED}
 
+label-font = 3
 label-volume = %percentage%%
 label-muted = " Mute"
 label-muted-foreground = #757575
@@ -39,7 +41,7 @@ ramp-volume-6 = 墳
 ramp-volume-7 = 墳
 ramp-volume-8 = 墳
 ramp-volume-9 = 墳
-ramp-volume-font = 2
+ramp-volume-font = 3
 ramp-volume-foreground = ${color.BLUE}
 
 ramp-headphones-0 = 
@@ -228,6 +230,7 @@ format = <label-mode>
 format-background = ${color.YELLOW}
 format-foreground = ${color.BACKGROUND}
 format-padding = 1
+format-font = 2
 
 label-monocle = "Monocle"
 label-tiled = "Tiled"
@@ -321,8 +324,8 @@ format-disconnected-prefix = " "
 format-disconnected-prefix-font = 3
 format-disconnected-prefix-foreground = ${color.RED}
 
-label-connected = "%{A1:networkmanager_dmenu &:}%downspeed% | %upspeed%%{A}"
-label-disconnected = "%{A1:networkmanager_dmenu &:}Offline%{A}"
+label-connected = "%{T2}%{A1:networkmanager_dmenu &:}%downspeed% | %upspeed%%{A}%{T-}"
+label-disconnected = "%{T2}%{A1:networkmanager_dmenu &:}Offline%{A}%{T-}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -375,7 +378,7 @@ format-prefix = "  "
 format-prefix-font = 3
 format-prefix-foreground = ${color.BLUE}
 
-label = %title:0:80:...%
+label = %title:0:60:...%
 label-font = 2
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

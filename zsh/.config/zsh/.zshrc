@@ -34,9 +34,9 @@ ENABLE_CORRECTION="true"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 plugins=(
-  git fzf pass vi-mode 
+  fzf pass vi-mode 
   ripgrep ag colored-man-pages 
-  zsh-autosuggestions)
+  zsh-autosuggestions forgit)
 source $ZSH/oh-my-zsh.sh
 
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true

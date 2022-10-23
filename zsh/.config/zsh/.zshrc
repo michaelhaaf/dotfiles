@@ -11,6 +11,7 @@ export SAVEHIST=1000000000
 
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 setopt NO_BEEP
 
@@ -43,6 +44,8 @@ VI_MODE_SET_CURSOR=true
 
 source /usr/share/fzf/key-bindings.zsh
 source /usr/share/fzf/completion.zsh
+source ~/.config/zsh/fzf-git.sh
+source ~/.config/zsh/fzf-custom.sh
 
 # User configuration
 

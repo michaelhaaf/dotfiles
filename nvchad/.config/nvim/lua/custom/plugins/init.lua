@@ -123,4 +123,7 @@ return {
     end,
   },
 
+  -- unicode 
+  ["chrisbra/unicode.vim"] = {},
+
 }

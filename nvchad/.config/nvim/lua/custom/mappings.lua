@@ -10,6 +10,14 @@ M.general = {
   },
 }
 
+M.markdownpreview = {
+  n = {
+    ["<leader>mm"] = {"<cmd> MarkdownPreview <CR>", "preview markdown"},
+    ["<leader>ms"] = {"<cmd> MarkdownStop <CR>", "stop markdown"},
+    ["<leader>mt"] = {"<cmd> MarkdownToggle <CR>", "toggle markdown"},
+  },
+}
+
 M.venn = {
   n = {
     ["vn"] = {

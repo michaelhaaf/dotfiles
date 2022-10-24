@@ -8,6 +8,7 @@ export DOTFILES="$HOME/dotfiles"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true

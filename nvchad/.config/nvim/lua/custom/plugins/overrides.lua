@@ -49,8 +49,15 @@ M.blankline = {
   },
 }
 
+M.whichkey = {
+  plugins = {
+    spelling = {
+      enabled = true,
+    },
+  },
+}
+
 M.alpha = {
-  disable = false,
   header = {
     val = {
       "           ▄ ▄                   ",

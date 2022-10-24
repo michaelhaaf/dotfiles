@@ -4,6 +4,11 @@ return {
 
   ----------------------------------------- default plugins ------------------------------------------
 
+  ["folke/which-key.nvim"] = {
+    disable = false,
+    override_options = overrides.whichkey,
+  },
+
   ["goolord/alpha-nvim"] = {
     disable = false,
     override_options = overrides.alpha,
@@ -109,6 +114,7 @@ return {
 
   -- basic diagrams for flow charts etc
   ["jbyuki/venn.nvim"] = {
+    disable = false,
     module = "venn.nvim",
     config = function()
       require("custom.plugins.venn").setup()
@@ -126,4 +132,39 @@ return {
   -- unicode 
   ["chrisbra/unicode.vim"] = {},
 
+  -- zen, context highlighting
+  ["folke/twilight.nvim"] = {
+    config = function()
+      require("twilight").setup()
+    end,
+  },
+
+  -- zen, context highlighting
+  ["Pocco81/true-zen.nvim"] = {
+    config = function()
+      require("true-zen").setup{
+        integrations = {
+          twilight = true
+        }
+      }
+    end,
+  },
+
+  -- markdown preview
+  ["iamcco/markdown-preview.nvim"] = {
+    run = function() vim.fn["mkdp#util#install"]() end,
+  },
+
+  -- better text object support
+  ["wellle/targets.vim"] = {},
+
+  -- git
+  ["lewis6991/gitsigns.nvim"] = {},
+
+  -- leap
+  ["ggandor/leap.nvim"] = {
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
 }

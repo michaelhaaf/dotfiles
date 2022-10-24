@@ -33,6 +33,7 @@ ENABLE_CORRECTION="true"
 # HIST_STAMPS="mm/dd/yyyy"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+export forgit_add=gaa
 plugins=(
   fzf pass vi-mode 
   ripgrep ag colored-man-pages 

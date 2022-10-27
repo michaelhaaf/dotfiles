@@ -1,5 +1,7 @@
 set selection-clipboard clipboard
 
+# map [mode] <binding> <shortcut function> <argument>
+
 # start flavours
 # Base16 Rosé Pine Moon Base16
 # Author: Michael Haaf <michael.haaf@gmail.com>

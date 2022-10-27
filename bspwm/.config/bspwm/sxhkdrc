@@ -31,15 +31,15 @@ ctrl + alt + t
 	sh ~/.config/bspwm/rofi/bin/themes
 
 # Rofi Menus/Applets
-super + {w,m,x,r,s}
-	sh ~/.config/bspwm/rofi/bin/{windows,mpd,powermenu,asroot,screenshot}
+super + {w,x,r,s}
+	sh ~/.config/bspwm/rofi/bin/{windows,powermenu,asroot,screenshot}
 
 # Hotkeys, Password Manager
 super + {slash, p, shift + p, a}
 	sh ~/.config/bspwm/rofi/bin/{sxhkd-help,rofi-pass,rofi-pass --insert}
 
-# Bluetooth, Camera control
-super + alt + {b, t, w, r, c}
+# Bluetooth, Camera control, Music
+super + alt + {b, t, w, r, c, m}
 	sh ~/.config/bspwm/rofi/bin/{rofi-bluetooth,tetristoggle,camtoggle,camreset}
 
 # Toggle Compositor
@@ -123,7 +123,7 @@ ctrl + shift + {q,r}
 	bspc {quit,wm -r} && dunstify "bspwm: wm reloaded"
 	
 # Preselect the direction; q to cancel
-super + ctrl + {h,j,k,l,q}
+super + ctrl + {Left,Down,Up,Right,q}
 	bspc node -p {west,south,north,east,cancel}
 
 # Preselect the ratio
@@ -185,11 +185,11 @@ super + shift + i
 	bspwinmask		
 
 # Expanding windows
-super + control + {Left,Right,Up,Down}
+super + control + {h,l,k,j}
 	bspc node -z {left -20 0,right 20 0,top 0 -20,bottom 0 20}
 	
 ## Shrinking windows
-super + alt + {Left,Right,Up,Down}
+super + alt + {h,l,k,j}
 	bspc node -z {left 20 0,right -20 0,top 0 20,bottom 0 -20}
 	
 ## Move floating windows

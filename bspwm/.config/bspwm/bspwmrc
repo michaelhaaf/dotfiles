@@ -146,8 +146,8 @@ for i in ${floating[@]}; do
    bspc rule -a $i state=floating follow=on focus=on; done
 
 ## Always Fullscreen Apps
-declare -a floating=(kitty-full)
-for i in ${floating[@]}; do
+declare -a fullscreen=(kitty-full)
+for i in ${fullscreen[@]}; do
    bspc rule -a $i state=fullscreen follow=on focus=on; done
 
 ## Always Pseudo Apps

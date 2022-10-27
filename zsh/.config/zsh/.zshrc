@@ -123,6 +123,7 @@ alias vwiki='nvim -c VimwikiIndex'
 alias vw='nvim -c VimwikiIndex'
 alias mbsync="mbsync -c \"$XDG_CONFIG_HOME/isync/mbsyncrc\""
 alias imapfilter="imapfilter -c \"$XDG_CONFIG_HOME/imapfilter/config.lua\""
+alias zathura="zathura --mode fullscreen"
 
 # ssh
 [[ "$TERM" == "xterm-kitty" ]] && alias ssh="kitty +kitten ssh"

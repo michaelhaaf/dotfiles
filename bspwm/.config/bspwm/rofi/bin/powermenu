@@ -69,13 +69,11 @@ case $chosen in
         ;;
     $logout)
 		ans=$(get_confirmation)
-		if [[ $ans == "yes" ]] || [[ $ans == "YES" ]] || [[ $ans == "y" ]]; then
-			bspc quit
-		elif [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
+		if [[ $ans == "no" ]] || [[ $ans == "NO" ]] || [[ $ans == "n" ]]; then
 			exit
-        else
-			show_msg
-        fi
-        ;;
+    else 
+			bspc quit
+    fi
+      ;;
 esac
 

@@ -215,7 +215,7 @@ time-alt = %A, %d %B %Y
 format = <label>
 format-prefix = " "
 format-prefix-font = 3
-format-prefix-foreground = ${color.RED}
+format-prefix-foreground = ${color.MAGENTA}
 
 label = %time%
 label-font = 4
@@ -339,6 +339,14 @@ format-prefix-foreground = ${color.BLUE}
 
 label = %title:0:60:...%
 label-font = 2
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
+[module/powermenu]
+type = custom/text
+content = ⏻
+content-foreground = ${color.RED}
+click-left = ~/.config/bspwm/rofi/bin/powermenu 
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 ;;	    __________  ______

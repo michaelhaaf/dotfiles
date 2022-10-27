@@ -99,10 +99,17 @@ XF86AudioMute
 
 XF86AudioMicMute
 	volume --toggle-mic
-	
+ 	
 # Music control
 XF86Audio{Next,Prev,Play,Stop}
 	mpc {next,prev,toggle,stop}
+
+# Volume control (No FN key)
+ctrl + alt + {Up,Down}
+	volume{ --inc, --dec}
+
+ctrl + alt + {m, shift + m}
+	volume{ --toggle, --toggle-mic}
 
 ##---------- Bspwm ----------##
 

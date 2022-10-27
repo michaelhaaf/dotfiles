@@ -43,6 +43,8 @@ USERNAME_field='user'
 AUTOTYPE_field='autotype'
 OTPmethod_field='otp_method'
 
+PASS2_field='pass2'
+
 default_autotype="user :tab pass"
 delay=2
 wait=0.2
@@ -54,7 +56,7 @@ help_color=""
 clip=primary
 clip_clear=45
 default_user="${ROFI_PASS_DEFAULT_USER-$(whoami)}"
-default_user2=john_doe
+default_user2="michael.haaf@gmail.com"
 password_length=12
 fix_layout=false
 edit_new_pass="true"
@@ -70,14 +72,17 @@ copy_pass="Alt+p"
 show="Alt+o"
 copy_menu="Alt+c"
 action_menu="Alt+a"
-type_menu="Alt+t"
+# type_menu="Alt+t" (same action as pressing enter)
 help="Alt+h"
 switch="Alt+x"
 insert_pass="Alt+n"
-qrcode="Alt+q"
+# qrcode="Alt+q" (disabled, apparently)
 previous_root="Shift+Left"
 next_root="Shift+Right"
+
 edit__pass="Alt+e"
+type__pass2="Alt+t"
+
 
 # Safe permissions
 umask 077
@@ -213,6 +218,20 @@ typePass () {
 	unset x_repeat_enabled
 	clearUp
 }
+
+typePass2 () {
+	checkIfPass
+
+	x_repeat_enabled=$(xset q | awk '/auto repeat:/ {print $3}')
+	xset r off
+
+	printf '%s' "${stuff[${PASS2_field}]}" | xdotool type --delay ${xdotool_delay} --clearmodifiers --file -
+
+	xset r "$x_repeat_enabled"
+	unset x_repeat_enabled
+
+	clearUp
+} 
 
 typeField () {
 	checkIfPass
@@ -372,7 +391,7 @@ mainMenu () {
 			-kb-custom-6 "${copy_pass}"
 			-kb-custom-7 "${show}"
 			-kb-custom-8 "${copy_url}"
-			-kb-custom-9 "${type_menu}"
+			-kb-custom-9 "${type__pass2}"
 			-kb-custom-10 "${previous_root}"
 			-kb-custom-11 "${next_root}"
 			-kb-custom-14 "${action_menu}"
@@ -381,7 +400,7 @@ mainMenu () {
 			-kb-custom-17 "${switch}"
 			-kb-custom-18 "${insert_pass}"
 			# -kb-custom-19 "${qrcode}" TODO: need more kb-custom-Xs
-            -kb-custom-19 "${edit__pass}"
+      -kb-custom-19 "${edit__pass}"
 		)
 
 		args+=( -kb-mode-previous ""    # These keyboard shortcut options are needed, because
@@ -477,12 +496,12 @@ mainMenu () {
 		15) copyPass;;
 		16) viewEntry;;
 		17) copyURL;;
-		18) default_do="menu" typeMenu;;
+		18) sleep $wait; typePass2;;
 		23) actionMenu;;
 		24) copyMenu;;
 		27) insertPass;;
 		# 28) generateQrCode;;
-        28) editPass;;
+    28) editPass;;
 	esac
 	clearUp
 }
@@ -503,7 +522,6 @@ helpMenu () {
 	${autotype}: Autotype
 	${type_user}: Type Username
 	${type_pass}: Type Password
-    ${qrcode}: Generate and display qrcode (disabled)
 	---
 	${copy_name}: Copy Username
 	${copy_pass}: Copy Password
@@ -518,7 +536,8 @@ helpMenu () {
 	---
 	${previous_root}: Switch to previous password store (--root)
 	${next_root}: Switch to next password store (--root)
-    ${edit__pass}: Edit Password
+  ${edit__pass}: Edit Password
+  ${type__pass2}: Type out the field 'pass2' (way to set 2nd pswd)
 EOM
 help_val=$?
 

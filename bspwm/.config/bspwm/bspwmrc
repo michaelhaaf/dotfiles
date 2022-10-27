@@ -48,8 +48,8 @@ ALTCYAN="$color14"
 ALTWHITE="$color15"
 
 ## Bspwm appearance
-CURRENT_BORDER='5'
-CURRENT_GAP='10'
+CURRENT_BORDER='1'
+CURRENT_GAP='0'
 CURRENT_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#

@@ -47,8 +47,8 @@ PASS2_field='pass2'
 
 default_autotype="user :tab pass"
 delay=2
-wait=0.2
-xdotool_delay=12
+wait=0.1
+xdotool_delay=6
 default_do='menu' # menu, copyPass, typeUser, typePass, copyUser, copyUrl, viewEntry, typeMenu, actionMenu, copyMenu, openUrl
 auto_enter='false'
 notify='false'

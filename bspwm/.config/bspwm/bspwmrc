@@ -186,7 +186,7 @@ xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
 feh --no-fehbg --bg-fill "$CURRENT_WALLPAPER"
-redshift -l 45:-73 &
+[[ -z "$(pgrep redshift)" ]] && redshift -l 45:-73 &
 
 # Start mpd
 # exec mpd "${HOME}"/.config/mpd/mpd.conf &

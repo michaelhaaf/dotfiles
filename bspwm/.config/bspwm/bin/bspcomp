@@ -3,4 +3,4 @@
 DIR="$HOME/.config/bspwm"
 
 # Terminate if picom is already running, start it if it is not
-pkill -f picom || picom --config "$DIR"/picom.conf &
+[[ -z "$(pgrep picom)" ]] && picom --config "$DIR"/picom.conf &

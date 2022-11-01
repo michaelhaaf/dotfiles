@@ -20,15 +20,8 @@ brightblue="#286983"
 brightcyan="#56949f"
 brightmagenta="#907aa9"
 
-# -----------------------------------------------------------------------------
-# Copyright (C) 2020-2022 Aditya Shakya <adi1090x@gmail.com>
-# Everyone is permitted to copy and distribute copies of this file under GNU-GPL3
-#
-# Pastel color scheme
-# -----------------------------------------------------------------------------
-
 # Wallpaper
-wallpaper='/usr/share/backgrounds/pastel.png'
+wallpaper=$(find ~/Pictures/wallpapers | sort -R | tail -1)
 
 # Special
 background="${black}"

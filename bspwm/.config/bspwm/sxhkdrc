@@ -203,6 +203,14 @@ super + alt + {h,l,k,j}
 super + shift + {Left,Down,Up,Right}
 	bspc node -v {-50 0,0 50,0 -50,50 0}
 
+# change resize ratio
+super + KP_Subtract
+    ~/.config/bspwm/bin/bspchgratio
+
+# focus parent node
+super + KP_Add
+    bspc node -f @parent
+
 ##### NUMPAD #####
 # placeholders for extra numpad buttons
 super + KP_{Divide,Multiply,Subtract,Add,Decimal,Enter,Separator}

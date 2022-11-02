@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Get the current non-leaf focused node
+NODE=$(bspc query -N -n focused.\!leaf)
+
+if [ $? -ne 0 ]; then
+	# No non-leaf, then select parent of focused node
+	NODE=$(bspc query -N -n @parent)
+fi
+
+# Get Ratio
+RATIO=$(bspc query -T -n $NODE | awk 'match($0, /"splitRatio":(0.[1-9]+)/, ary) {print ary[1]}')
+
+# Select new Ratio
+NEWRATIO=0.15
+if [ $RATIO = '0.15' ]; then
+	NEWRATIO=0.25
+elif [ $RATIO = '0.25' ]; then
+	NEWRATIO=0.5
+elif [ $RATIO = '0.5' ]; then
+	NEWRATIO=0.75
+elif [ $RATIO = '0.75' ]; then
+	NEWRATIO=0.85
+fi
+
+# Apply new ratio
+bspc node $NODE -r $NEWRATIO

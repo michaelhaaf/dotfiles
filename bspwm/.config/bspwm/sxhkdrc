@@ -44,7 +44,7 @@ super + alt + {b, t, w, r, c, m}
 
 # Toggle Compositor
 super + alt + c
-  sh ~/.config/bspwm/bin/bspcomp
+  pkill -f picom || picom --config ~/.config/bspwm/picom.conf
 
 ##---------- Applications ----------##
 
@@ -62,7 +62,7 @@ super + alt + p
 
 # Lockscreen
 ctrl + alt + l
-    betterlockscreen --lock
+  betterlockscreen --lock
 
 ##---------- System Keys ----------##
 

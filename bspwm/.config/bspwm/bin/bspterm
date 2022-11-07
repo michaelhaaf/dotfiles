@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 if [ "$1" == "--float" ]; then
-	kitty --class 'kitty-float'
+	kitty --class 'kitty-float' -o font_size=10
 elif [ "$1" == "--full" ]; then
 	kitty --class 'kitty-full' -o background_opacity=0.69
 else

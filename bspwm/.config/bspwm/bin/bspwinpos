@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Inspired by: https://github.com/baskerville/bspwm/issues/263
+
+wid=$1
+class=$2
+
+if [ "$class" = "kitty-float" ] ; then
+  xdotool windowmove "${wid}" 900 100 
+fi

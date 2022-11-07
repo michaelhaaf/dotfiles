@@ -140,10 +140,13 @@ for i in ${settings[@]}; do
    bspc rule -a $i desktop='^8' state=floating follow=on focus=on; done
 
 ## Always Floating Apps
-declare -a floating=(kitty-float Pcmanfm Thunar Onboard Yad 'Firefox:Places' \
+declare -a floating=(kitty-float Pcmanfm Onboard Yad 'Firefox:Places' \
 Viewnior feh Nm-connection-editor)
 for i in ${floating[@]}; do
    bspc rule -a $i state=floating follow=on focus=on; done
+
+# Start floating windows off to the right hand side (?)
+bspc config external_rules_command ~/.config/bspwm/bin/bspwinpos
 
 ## Always Fullscreen Apps
 declare -a fullscreen=(kitty-full)

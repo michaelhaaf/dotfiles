@@ -44,7 +44,7 @@ super + alt + {b, t, w, r, c, m}
 
 # Toggle Compositor
 super + alt + c
-  pkill -f picom || picom --config ~/.config/bspwm/picom.conf
+  pkill -f picom || sh ~/.config/bspwm/bin/bspcomp
 
 ##---------- Applications ----------##
 

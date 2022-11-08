@@ -9,7 +9,7 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude .steam --exclude Steam'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 

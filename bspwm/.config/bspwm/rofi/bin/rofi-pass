@@ -10,7 +10,7 @@ _rofi () {
 }
 
 _pwgen () {
-	pwgen -y "$@"
+	pwgen -s "$@"
 }
 
 _image_viewer () {

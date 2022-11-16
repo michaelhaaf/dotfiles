@@ -15,15 +15,22 @@ M.treesitter = {
     "bash",
     "lua",
     "norg",
+    "python",
   },
 }
 
 M.nvimtree = {
+  view = {
+    adaptive_size = false,
+    hide_root_folder = false,
+  },
+
   git = {
     enable = true,
   },
 
   renderer = {
+    add_trailing = true,
     highlight_git = true,
     icons = {
       show = {

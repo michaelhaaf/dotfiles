@@ -9,22 +9,49 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
+  b.code_actions.xo,
   b.formatting.deno_fmt,
-  b.formatting.prettier.with { filetypes = { "html", "markdown", "css" } },
+  b.formatting.prettier,
 
   -- Lua
   b.formatting.stylua,
 
   -- Shell
-  b.formatting.shfmt,
-  b.diagnostics.shellcheck.with { diagnostics_format = "#{m} [#{c}]" },
+  b.formatting.beautysh,
+  b.diagnostics.shellcheck,
 
   -- cpp
   b.formatting.clang_format,
   b.formatting.rustfmt,
+
+  -- python
+  b.diagnostics.flake8,
+  b.formatting.autopep8,
+
+  -- general dev
+  -- b.code_actions.gitsigns,
+  -- b.code_actions.refactoring,
+
+  -- prose
+  b.diagnostics.proselint,
+  b.code_actions.proselint,
 }
 
-null_ls.setup {
+local utils = require("core.utils")
+
+local on_attach = function(client, bufnr)
+  utils.load_mappings("lspconfig", { buffer = bufnr })
+
+  -- Autoformat on save: as long as the mappings are working, I don't need this.
+  -- vim.api.nvim_create_autocmd("BufWritePost", {
+  --   callback = function()
+  --     vim.lsp.buf.format()
+  --   end,
+  -- })
+end
+
+null_ls.setup({
   debug = true,
   sources = sources,
-}
+  on_attach = on_attach,
+})

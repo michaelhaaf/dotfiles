@@ -1,9 +1,9 @@
 
 # Switch between Ripgrep launcher mode (CTRL-R) and fzf filtering mode (CTRL-F)
 _fzf_custom_finder() {
-  RG_PREFIX="rg --column --line-number --no-heading --color=always --smart-case "
+  RG_PREFIX="rg --hidden --column --line-number --no-heading --color=always --smart-case "
   INITIAL_QUERY="${*:-}"
-  FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY")" \
+  FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY") --exclude .steam --exclude .git --exclude Steam" \
   fzf --ansi \
       --color "hl:-1:underline,hl+:-1:underline:reverse" \
       --disabled --query "$INITIAL_QUERY" \

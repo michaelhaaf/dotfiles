@@ -2,7 +2,7 @@
 
 cd "$1" || exit
 git add .
-git commit -a -m "updated on $( date +'%Y%m%d_%H:%M' )"
+git commit -a -m "Automatic update on $(date +'%Y%m%d_%H:%M')"
 
 expect -c "
 spawn git push

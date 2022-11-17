@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+wallpaper=$(find ~/sync/media/pictures/wallpapers | sort -R | tail -1)
+feh --no-fehbg --bg-fill "$wallpaper"

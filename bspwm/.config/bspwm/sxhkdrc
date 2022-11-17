@@ -27,8 +27,12 @@ super + a
   pavucontrol
 
 # Rofi Themes Menu
+# ctrl + alt + t
+# 	sh ~/.config/bspwm/rofi/bin/themes
+
+# Cycle wallpapers
 ctrl + alt + t
-	sh ~/.config/bspwm/rofi/bin/themes
+  bspwallpcycle 
 
 # Rofi Menus/Applets
 super + {w,x,r,s}

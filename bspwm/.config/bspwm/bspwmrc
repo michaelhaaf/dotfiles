@@ -142,9 +142,9 @@ for i in ${settings[@]}; do
 
 ## Always Floating Apps
 declare -a floating=(kitty-float Pcmanfm Onboard Yad 'Firefox:Places' \
-Viewnior feh Nm-connection-editor)
+Viewnior feh Nm-connection-editor pinentry-gnome3)
 for i in ${floating[@]}; do
-   bspc rule -a $i state=floating follow=on focus=on; done
+   bspc rule -a $i state=floating follow=on focus=on layer=above; done
 
 # Start floating windows off to the right hand side (?)
 bspc config external_rules_command ~/.config/bspwm/bin/bspwinpos

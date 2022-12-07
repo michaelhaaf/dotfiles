@@ -283,7 +283,7 @@ format-disconnected-prefix = " "
 format-disconnected-prefix-font = 3
 format-disconnected-prefix-foreground = ${color.RED}
 
-label-connected = "%{T2}%{A1:networkmanager_dmenu &:}%downspeed% | %upspeed%%{A}%{T-}"
+label-connected = "%{T2}%{A1:networkmanager_dmenu &:}%downspeed:8% | %upspeed:8%%{A}%{T-}"
 label-disconnected = "%{T2}%{A1:networkmanager_dmenu &:}Offline%{A}%{T-}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_

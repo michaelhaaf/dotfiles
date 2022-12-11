@@ -92,7 +92,11 @@ ctrl + alt + Print
 
 # Brighness control
 XF86MonBrightness{Up,Down}
-	brightness{ --inc, --dec}
+	light {-A 1,-U 1}
+	
+# More Brighness control
+shift + XF86MonBrightness{Up,Down}
+	light {-A 10,-U 10}
 	
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume}

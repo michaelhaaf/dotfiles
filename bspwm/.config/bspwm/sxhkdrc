@@ -100,10 +100,10 @@ shift + XF86MonBrightness{Up,Down}
 	
 # Volume control
 XF86Audio{RaiseVolume,LowerVolume}
-	volume{ --inc, --dec}
+	polybar-msg action {"#volume.hook.1","#volume.hook.2"} 
 
 XF86AudioMute
-	volume --toggle
+	polybar-msg action "#volume.hook.3"
 
 XF86AudioMicMute
 	volume --toggle-mic
@@ -114,10 +114,10 @@ XF86Audio{Next,Prev,Play,Stop}
 
 # Volume control (No FN key)
 ctrl + alt + {Up,Down}
-	volume{ --inc, --dec}
+	polybar-msg action {"#volume.hook.1","#volume.hook.2"} 
 
 ctrl + alt + {m, shift + m}
-	volume{ --toggle, --toggle-mic}
+	polybar-msg action "#volume.hook.3"
 
 ##---------- Bspwm ----------##
 

@@ -1,45 +1,22 @@
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
 [module/volume]
-type = internal/pulseaudio
+type = custom/ipc
 
-; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
-; If not, uses default sink
-sink = alsa_output.pci-0000_12_00.3.analog-stereo
+format-font = 2
+format = <output>
 
-; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
-; Default: true
-use-ui-max = true
+hook-0 = ~/.config/bspwm/bin/bsppipewire --volume
+hook-1 = ~/.config/bspwm/bin/bsppipewire --up
+hook-2 = ~/.config/bspwm/bin/bsppipewire --down
+hook-3 = ~/.config/bspwm/bin/bsppipewire --mute
+hook-4 = sleep 1 && ~/.config/bspwm/bin/bsppipewire --volume
+initial = 1
 
-; Interval for volume increase/decrease (in percent points)
-; Default: 5
-interval = 1
-
-format-volume = <ramp-volume> <label-volume>
-
-format-muted = <label-muted>
-format-muted-prefix = 婢
-format-muted-prefix-font = 2
-format-muted-prefix-foreground = ${color.RED}
-
-label-volume = %{T2}%percentage%%%{T-}
-label-muted = %{T2} Mute%{T-}
-label-muted-foreground = #757575
-
-ramp-volume-0 = 奄
-ramp-volume-1 = 奄
-ramp-volume-2 = 奄
-ramp-volume-3 = 奔
-ramp-volume-4 = 奔
-ramp-volume-5 = 奔
-ramp-volume-6 = 墳
-ramp-volume-7 = 墳
-ramp-volume-8 = 墳
-ramp-volume-9 = 墳
-ramp-volume-foreground = ${color.BLUE}
-
-ramp-headphones-0 = 
-ramp-headphones-1 = 
+scroll-up = exec polybar-msg action "#volume.hook.1"
+scroll-down = exec polybar-msg action "#volume.hook.2"
+click-left = exec polybar-msg action "#volume.hook.3"
+click-right = exec pavucontrol &
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 

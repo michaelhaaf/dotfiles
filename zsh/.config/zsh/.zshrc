@@ -1,3 +1,28 @@
+# ZSH updates
+zstyle ':omz:update' mode auto    
+# zstyle ':omz:update' mode reminder  
+# zstyle ':omz:update' mode disabled 
+# zstyle ':omz:update' frequency 13
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+HYPHEN_INSENSITIVE="true"
+# DISABLE_MAGIC_FUNCTIONS="true"
+# DISABLE_LS_COLORS="true"
+# DISABLE_AUTO_TITLE="true"
+
+ENABLE_CORRECTION="true"
+# COMPLETION_WAITING_DOTS="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+# HIST_STAMPS="mm/dd/yyyy"
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+export forgit_add=gaa
+plugins=(
+  fzf pass vi-mode 
+  ripgrep ag colored-man-pages 
+  zsh-autosuggestions forgit)
+source $ZSH/oh-my-zsh.sh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -15,30 +40,6 @@ export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 setopt NO_BEEP
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-HYPHEN_INSENSITIVE="true"
-
-# zstyle ':omz:update' mode reminder  
-# zstyle ':omz:update' mode disabled 
-zstyle ':omz:update' mode auto    
-# zstyle ':omz:update' frequency 13
-
-# DISABLE_MAGIC_FUNCTIONS="true"
-# DISABLE_LS_COLORS="true"
-# DISABLE_AUTO_TITLE="true"
-
-ENABLE_CORRECTION="true"
-# COMPLETION_WAITING_DOTS="true"
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-# HIST_STAMPS="mm/dd/yyyy"
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-export forgit_add=gaa
-plugins=(
-  fzf pass vi-mode 
-  ripgrep ag colored-man-pages 
-  zsh-autosuggestions forgit)
-source $ZSH/oh-my-zsh.sh
 
 VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
 VI_MODE_SET_CURSOR=true

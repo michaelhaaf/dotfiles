@@ -13,23 +13,24 @@ getDefaultSource() {
     echo "${description}"
 }
 
-VOLUME=$(pamixer --get-volume-human)
-SINK=$(getDefaultSink)
-SOURCE=$(getDefaultSource)
+echoVolume() {
+  icon="${1}";
+  echo "${icon}$(pamixer --get-volume-human)";
+}
 
 case $1 in
     "--up")
-        pamixer --increase 1 && pamixer --get-volume-human
+        pamixer --increase 1 && echoVolume "vol: "
         ;;
     "--down")
-        pamixer --decrease 1 && pamixer --get-volume-human
+        pamixer --decrease 1 && echoVolume "vol: "
         ;;
     "--mute")
-        pamixer --toggle-mute && pamixer --get-volume-human
+        pamixer --toggle-mute && echoVolume "vol: "
         ;;
     "--volume")
-        pamixer --get-volume-human
+        echoVolume "vol: "
         ;;
     *)
-        echo "Source: ${SOURCE} | Sink: ${VOLUME} ${SINK}"
+      echo "Source: $(getDefaultSource) | Sink: $(echoVolume "") $(getDefaultSink)"
 esac

@@ -35,11 +35,11 @@ ctrl + alt + t
   bspwallpcycle 
 
 # Rofi Menus/Applets
-super + {w,x,r,s}
-	sh ~/.config/bspwm/rofi/bin/{windows,powermenu,asroot,screenshot}
+super + {w,x,r}
+	sh ~/.config/bspwm/rofi/bin/{windows,powermenu,asroot}
 
 # Hotkeys, Password Manager
-super + {slash, p, shift + p, a}
+super + {slash, p, shift + p}
 	sh ~/.config/bspwm/rofi/bin/{sxhkd-help,rofi-pass,rofi-pass --insert}
 
 # Bluetooth, Camera control, Music
@@ -138,12 +138,16 @@ ctrl + shift + {q,r}
 	bspc {quit,wm -r} && dunstify "bspwm: wm reloaded"
 	
 # Preselect the direction; q to cancel
-super + ctrl + {Left,Down,Up,Right,q}
+super + ctrl + {Left,Down,Up,Right,Escape}
 	bspc node -p {west,south,north,east,cancel}
 
 # Preselect the ratio
 super + ctrl + {1-9}
 	bspc node -o 0.{1-9}
+
+# Move current window to a pre-selected space
+super + shift + m
+  bspc node -n last.!automatic
 
 # Desktop: Fullscreen or Monocle
 super + m
@@ -193,7 +197,7 @@ super + {o,i}
 
 # Send focused window to another workspace
 super + {_,shift + }{1-9,0}
-	bspc {desktop -f,node -d} '^{1-9,10}'
+	bspc {desktop -f,node -d} '^{1-9,10}' --follow
 
 # Hide/Unhide Window
 super + shift + i
@@ -212,12 +216,22 @@ super + shift + {Left,Down,Up,Right}
 	bspc node -v {-50 0,0 50,0 -50,50 0}
 
 # change resize ratio
-super + KP_Subtract
+ctrl + alt + o
     ~/.config/bspwm/bin/bspchgratio
 
 # focus parent node
 super + KP_Add
     bspc node -f @parent
+
+# Rotate tree
+super + shift + {d, a}
+  bspc node @/ -C {forward,backward}
+
+# Expand/contract a window by moving one of its side outward/inward
+super + s : {h,j,k,l}
+    STEP=20; SELECTION={1,2,3,4}; \
+    bspc node -z $(echo "left -$STEP 0,bottom 0 $STEP,top 0 -$STEP,right $STEP 0" | cut -d',' -f$SELECTION) || \
+    bspc node -z $(echo "right -$STEP 0,top 0 $STEP,bottom 0 -$STEP,left $STEP 0" | cut -d',' -f$SELECTION)
 
 ##### NUMPAD #####
 # placeholders for extra numpad buttons
@@ -226,7 +240,7 @@ super + KP_{Divide,Multiply,Subtract,Add,Decimal,Enter,Separator}
 
 # windows: numpad numbers can be used the same as top row numbers
 super + {_,shift + }KP_{Home,Up,Prior,Left,Begin,Right,End,Down,Next,Insert}
-	bspc {desktop -f,node -d} '^{7,8,9,4,5,6,1,2,3,10}'
+	bspc {desktop -f,node -d} '^{7,8,9,4,5,6,1,2,3,10}' --follow
 
 # preselect the ratio: numpad numbers can be used the same as top row numbers
 super + ctrl + KP_{Home,Up,Prior,Left,Begin,Right,End,Down,Next}

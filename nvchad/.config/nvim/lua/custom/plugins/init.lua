@@ -121,15 +121,15 @@ return {
     end,
   },
 
-  -- surround 
+  -- surround
   ["kylechui/nvim-surround"] = {
     tag = "*",
     config = function()
-        require("nvim-surround").setup()
+      require("nvim-surround").setup()
     end,
   },
 
-  -- unicode 
+  -- unicode
   ["chrisbra/unicode.vim"] = {},
 
   -- zen, context highlighting
@@ -142,7 +142,7 @@ return {
   -- zen, context highlighting
   ["Pocco81/true-zen.nvim"] = {
     config = function()
-      require("true-zen").setup{
+      require("true-zen").setup {
         integrations = {
           twilight = true
         }

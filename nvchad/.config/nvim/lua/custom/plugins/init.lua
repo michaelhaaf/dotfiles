@@ -158,9 +158,6 @@ return {
   -- better text object support
   ["wellle/targets.vim"] = {},
 
-  -- git
-  ["lewis6991/gitsigns.nvim"] = {},
-
   -- leap
   ["ggandor/leap.nvim"] = {
     config = function()

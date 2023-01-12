@@ -57,10 +57,36 @@ M.shade = {
 
 
 M.navigation = {
-  n = {
-    ["H"] = { "^", "beginning of line" },
-    ["L"] = { "$", "end of line" },
-  }
+	n = {
+		["H"] = { "^", "beginning of line" },
+		["L"] = { "$", "end of line" },
+	},
+}
+
+M.gitsigns = {
+	v = {
+		["<leader>hs"] = { ":Gitsigns stage_hunk<CR>" },
+		["<leader>hr"] = { ":Gitsigns reset_hunk<CR>" },
+	},
+
+	n = {
+		["<leader>hs"] = { ":Gitsigns stage_hunk<CR>" },
+		["<leader>hr"] = { ":Gitsigns reset_hunk<CR>" },
+		["<leader>hS"] = { "<cmd>Gitsigns stage_buffer<CR>" },
+		["<leader>hu"] = { "<cmd>Gitsigns undo_stage_hunk<CR>" },
+		["<leader>hR"] = { "<cmd>Gitsigns reset_buffer<CR>" },
+		["<leader>hp"] = { "<cmd>Gitsigns preview_hunk<CR>" },
+		["<leader>tb"] = { "<cmd>Gitsigns toggle_current_line_blame<CR>" },
+		["<leader>hd"] = { "<cmd>Gitsigns diffthis<CR>" },
+		["<leader>td"] = { "<cmd>Gitsigns toggle_deleted<CR>" },
+	},
+
+	i = {
+		["ih"] = { ":<C-U>Gitsigns select_hunk<CR>" },
+	},
+	o = {
+		["ih"] = { ":<C-U>Gitsigns select_hunk<CR>" },
+	},
 }
 
 return M

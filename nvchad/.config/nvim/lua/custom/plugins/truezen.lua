@@ -22,6 +22,9 @@ local options = {
       auto_padding = false,
     },
   },
+  misc = {
+    on_off_commands = true,
+  },
 }
 
 truzen.setup(options)

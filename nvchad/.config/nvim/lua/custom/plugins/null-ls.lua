@@ -29,7 +29,7 @@ local sources = {
   b.formatting.autopep8,
 
   -- general dev
-  -- b.code_actions.gitsigns,
+  b.code_actions.gitsigns,
   -- b.code_actions.refactoring,
 
   -- prose

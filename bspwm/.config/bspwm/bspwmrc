@@ -86,6 +86,7 @@ bspc config paddingless_monocle true
 bspc config single_monocle true
 bspc config focus_follows_pointer false
 bspc config pointer_follows_monitor
+bspc config ignore_ewmh_focus true
 
 ## Manage all the unmanaged windows remaining from a previous session.
 bspc wm --adopt-orphans
@@ -210,3 +211,7 @@ bspbar
 bspcomp
 bspdunst
 bspfloat &
+
+# Launch default programs
+gtk-launch firefox &
+gtk-launch firefox-work &

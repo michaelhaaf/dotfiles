@@ -1,4 +1,4 @@
 #!/bin/bash
 
-firefox-developer-edition > /dev/null 2>&1 & disown
+firefox-developer-edition "127.0.0.1:8080" > /dev/null 2>&1 & disown
 live-server --no-browser

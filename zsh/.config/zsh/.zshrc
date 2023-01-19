@@ -19,7 +19,7 @@ ENABLE_CORRECTION="true"
 export forgit_add=gaa
 plugins=(
   fzf pass vi-mode 
-  ripgrep ag colored-man-pages 
+  ripgrep ag 
   zsh-autosuggestions forgit)
 source $ZSH/oh-my-zsh.sh
 
@@ -37,6 +37,15 @@ export SAVEHIST=1000000000
 export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude .steam --exclude Steam'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
+
+# MAN page coloring, see https://unix.stackexchange.com/a/501164
+export LESS_TERMCAP_mb=$'\e[6m'          # begin blinking
+export LESS_TERMCAP_md=$'\e[34m'         # begin bold
+export LESS_TERMCAP_us=$'\e[4;32m'       # begin underline
+export LESS_TERMCAP_so=$'\e[1;33;41m'    # begin standout-mode - info box
+export LESS_TERMCAP_me=$'\e[m'           # end mode
+export LESS_TERMCAP_ue=$'\e[m'           # end underline
+export LESS_TERMCAP_se=$'\e[m'           # end standout-mode
 
 setopt NO_BEEP
 

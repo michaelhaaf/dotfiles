@@ -7,6 +7,7 @@ export XDG_STATE_HOME="$HOME/.local/share";
 export DOTFILES="$HOME/dotfiles"
 
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/share/cargo/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
 export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 

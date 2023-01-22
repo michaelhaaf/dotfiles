@@ -1,3 +1,8 @@
+local opt = vim.opt
+local g = vim.g
+
+opt.foldmethod = "expr"
+opt.foldexpr = "nvim_treesitter#foldexpr()"
 -- Dynamic terminal padding with/without nvim (for siduck's st only)
 
 -- replace string from file

@@ -16,7 +16,6 @@ export PATH="${PATH}:$HOME/.config/bspwm/bin"
 
 ## Run java applications without issues
 export _JAVA_AWT_WM_NONREPARENTING=1
-#wmname LG3D
 
 ## Current theme ---------------------------------------------#
 
@@ -48,29 +47,14 @@ ALTCYAN="$color14"
 ALTWHITE="$color15"
 
 ## Bspwm appearance
-CURRENT_BORDER='1'
+CURRENT_BORDER='2'
 CURRENT_GAP='0'
 CURRENT_SRATIO='0.50'
 
 ## Configurations --------------------------------------------#
-
-## Manage Workspaces
-monitor-setup
 bspc config remove_unplugged_monitors true
+bspc config remove_disabled_monitors true
 
-mapfile -t monitors < <(bspc query -M | uniq)
-[[ "${#monitors[@]}" = 1 ]] && \
-  bspc monitor "${monitors[0]}" -d '' '' '' '' '' '' '' ''
-[[ "${#monitors[@]}" = 2 ]] && \
-  bspc monitor "${monitors[0]}" -d '' '' '' '' '' '' '' '' && \
-	bspc monitor "${monitors[1]}" -d ﱣ ﱣ
-[[ "${#monitors[@]}" = 3 ]] && \
-  bspc monitor "${monitors[0]}" -d '' '' '' '' '' '' '' '' && \
-	bspc monitor "${monitors[1]}" -d ﱣ && \
-	bspc monitor "${monitors[2]}" -d ﱣ 
-
-
-## Apply bspwm configurations
 bspc config border_width "$CURRENT_BORDER"
 bspc config window_gap "$CURRENT_GAP"
 bspc config split_ratio "$CURRENT_SRATIO"
@@ -146,7 +130,7 @@ Viewnior feh Nm-connection-editor pinentry-gnome3)
 for i in ${floating[@]}; do
    bspc rule -a $i state=floating layer=above; done
 
-# Start floating windows off to the right hand side (?)
+# Start floating windows off to the right hand side
 bspc config external_rules_command ~/.config/bspwm/bin/bspwinpos
 
 ## Always Fullscreen Apps
@@ -190,10 +174,6 @@ xsetroot -cursor_name left_ptr
 
 # Restore wallpaper
 feh --no-fehbg --bg-fill "$CURRENT_WALLPAPER"
-[[ -z "$(pgrep redshift)" ]] && redshift -l 45:-73 &
-
-# Start mpd
-# exec mpd "${HOME}"/.config/mpd/mpd.conf &
 
 # Sensible DAS and capslock switch
 xset r rate 300 50
@@ -206,12 +186,15 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action2 resize_corner
 
 # Start bspwm scripts
+bspworkspaceupdate
 bspcolors
 bspbar
 bspcomp
 bspdunst
-bspfloat &
+[[ -z "$(pgrep bspmonitor)" ]] && bspmonitor &
+[[ -z "$(pgrep bspfloat)" ]] && bspfloat &
 
 # Launch default programs
-gtk-launch firefox &
-gtk-launch firefox-work &
+[[ -z "$(pgrep --full 'firefox -P personal')" ]] && gtk-launch firefox &
+[[ -z "$(pgrep --full 'firefox -P work')" ]] && gtk-launch firefox-work &
+[[ -z "$(pgrep redshift)" ]] && redshift -l 45:-73 &

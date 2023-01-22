@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+# Adapted from https://tyler.vc/auto-monitor-detection-on-linux
+
+# udev will wait for our script to finish before the monitor is available
+# for use, so we will use the `at` command to run our command again as
+# another user:
+# NOTE: requires `at` and `atd.service` to be running
+if [ "$1" != "forked" ]; then
+    echo "$(dirname "$0")/$(basename "$0") forked" | at now
+    exit
+fi
+
+# udev runs as root, so we need to tell it how to connect to the X server:
+export DISPLAY=:0
+export XAUTHORITY=/home/michael/.Xauthority
+
+defaultArgs=("--auto" "--mode" "1920x1080" "--primary")
+
+isHdmiCon=$(xrandr | sed -n '/^HDMI1 connected/p')
+[[ -n "$isHdmiCon" ]] \
+    && hdmiArgs=("--auto" "--left-of" "eDP1") \
+    || hdmiArgs=("--off")
+
+isDpCon=$(xrandr | sed -n '/^DP1 connected/p')
+[[ -n "$isDpCon" ]] \
+    && dpArgs=("--auto" "--right-of" "eDP1") \
+    || dpArgs=("--off")
+
+xrandr --output eDP1 "${defaultArgs[@]}" --output HDMI1 "${hdmiArgs[@]}" --output DP1 "${dpArgs[@]}"
+
+su michael /home/michael/.config/bspwm/bin/bspbar

@@ -21,7 +21,7 @@ brightcyan="#56949f"
 brightmagenta="#907aa9"
 
 # Wallpaper
-wallpaper=$(find ~/Pictures/wallpapers | sort -R | tail -1)
+wallpaper=$(find ~/sync/media/pictures/wallpapers | sort -R | tail -1)
 
 # Special
 background="${black}"

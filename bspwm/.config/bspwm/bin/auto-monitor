@@ -28,4 +28,4 @@ isDpCon=$(xrandr | sed -n '/^DP1 connected/p')
 
 xrandr --output eDP1 "${defaultArgs[@]}" --output HDMI1 "${hdmiArgs[@]}" --output DP1 "${dpArgs[@]}"
 
-su michael /home/michael/.config/bspwm/bin/bspbar
+[[ -z "$(pgrep polybar)" ]] && su michael /home/michael/.config/bspwm/bin/bspbar

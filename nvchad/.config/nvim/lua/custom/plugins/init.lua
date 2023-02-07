@@ -164,4 +164,7 @@ return {
       require("leap").add_default_mappings()
     end,
   },
+
+  -- better markdown tables
+  ["dhruvasagar/vim-table-mode"] = {},
 }

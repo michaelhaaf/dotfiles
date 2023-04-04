@@ -80,12 +80,6 @@ M.gitsigns = {
 		["<leader>td"] = { "<cmd>Gitsigns toggle_deleted<CR>" },
 	},
 
-	i = {
-		["ih"] = { ":<C-U>Gitsigns select_hunk<CR>" },
-	},
-	o = {
-		["ih"] = { ":<C-U>Gitsigns select_hunk<CR>" },
-	},
 }
 
 return M

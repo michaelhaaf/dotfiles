@@ -6,6 +6,9 @@ export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_STATE_HOME="$HOME/.local/share";
 export DOTFILES="$HOME/dotfiles"
 
+export XDG_MUSIC_DIR="$HOME/Music"
+export XDG_PICTURES_DIR="$HOME/Pictures"
+
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
 export PATH="$PATH:$(go env GOPATH)/bin"
@@ -14,7 +17,7 @@ export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 export PASSWORD_STORE_ENABLE_EXTENSIONS=true
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
-export WAYLAND_DISPLAY=""
+# export WAYLAND_DISPLAY=""
 export ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
 export ZSH_CACHE_DIR="$ZSH/cache"
 export ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump"
@@ -25,9 +28,16 @@ export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 
 export NOTMUCH_CONFIG="$XDG_CONFIG_HOME/notmuch/config"
 
+export LYNX_CFG="$XDG_CONFIG_HOME"/lynx.cfg
+export LYNX_LSS="$XDG_CONFIG_HOME"/lynx.lss
+
 ### Default programs: ###
 export TERMINAL="kitty"
 export EDITOR="nvim"
-export TERMINAL="kitty"
 export BROWSER="firefox"
 export READER="zathura"
+. "/home/michael/.local/share/cargo/env"
+
+### WAYLAND ###
+export GBM_BACKEND=nvidia-drm
+export __GLC_VENDOR_LIBRARY_NAME=nvidia

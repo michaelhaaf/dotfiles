@@ -167,4 +167,7 @@ return {
 
   -- better markdown tables
   ["dhruvasagar/vim-table-mode"] = {},
+
+  -- .yuck editting
+  ["elkowar/yuck.vim"] = {},
 }

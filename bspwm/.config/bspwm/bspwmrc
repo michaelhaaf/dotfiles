@@ -22,8 +22,8 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 ## Load current theme files to get colors for bspwm
 source "$BSPDIR"/themes/current.bash
 
-## Get the wallpaper from theme file
-CURRENT_WALLPAPER="$wallpaper"
+## Wallpaper
+CURRENT_WALLPAPER=$(find ~/Pictures/wallpapers/ | sort -R | tail -1)
 
 ## Get the colors from theme file
 FOREGROUND="$foreground"
@@ -80,53 +80,8 @@ bspc wm --adopt-orphans
 # remove all rules first
 bspc rule -r *:*
 
-## 1 > terminal (always open terminal on workspace-1)
-# bspc rule -a kitty desktop='^1'
-bspc rule -a Xfce4-terminal desktop='^1'
-
-## 2 > web (always open web browser on workspace-2)
-bspc rule -a firefox desktop='^2'
-
-## 3 > files (always open file manager on workspace-3)
-declare -a files=(Pcmanfm)
-for i in ${files[@]}; do
-   bspc rule -a $i desktop='^3'; done
-
-## 4 > code (always open editors on workspace-4)
-declare -a code=(Geany code-oss)
-for i in ${code[@]}; do
-   bspc rule -a $i desktop='^4'; done
-
-## 5 > office and docs (always open office/doc apps on workspace-5)
-declare -a office=(firefox-work Gucharmap Atril Evince \
-libreoffice-writer libreoffice-calc libreoffice-impress \
-libreoffice-startcenter libreoffice Soffice *:libreofficedev *:soffice)
-for i in ${office[@]}; do
-   bspc rule -a $i desktop='^5'; done
-
-## 6 > communication (always open communication apps on workspace-6)
-declare -a comm=(Thunderbird TelegramDesktop Hexchat discord Signal)
-for i in ${comm[@]}; do
-   bspc rule -a $i desktop='^6'; done
-
-## 7 > media (always open media apps on workspace-7)
-declare -a media=(Audacity Music MPlayer Lxmusic Inkscape Gimp-2.10)
-for i in ${media[@]}; do
-   bspc rule -a $i desktop='^7' state=tiled; done
-
-## 8 > system (always open system apps on workspace-8)
-bspc rule -a 'VirtualBox Manager' desktop='^8'
-bspc rule -a 'virt-manager' desktop='^8'
-bspc rule -a GParted desktop='^8'
-declare -a settings=(Lxappearance Lxtask Lxrandr Arandr \
-System-config-printer.py Pavucontrol Exo-helper-1 \
-Xfce4-power-manager-settings)
-for i in ${settings[@]}; do
-   bspc rule -a $i desktop='^8' state=tiled; done
-
 ## Always Floating Apps
-declare -a floating=(kitty-float Pcmanfm Onboard Yad 'Firefox:Places' \
-Viewnior feh Nm-connection-editor pinentry-gnome3)
+declare -a floating=(kitty-float pinentry-gnome3)
 for i in ${floating[@]}; do
    bspc rule -a $i state=floating layer=above; done
 
@@ -137,11 +92,6 @@ bspc config external_rules_command ~/.config/bspwm/bin/bspwinpos
 declare -a fullscreen=(kitty-full)
 for i in ${fullscreen[@]}; do
    bspc rule -a $i state=fullscreen; done
-
-## Always Pseudo Apps
-declare -a pseudo=(Discord discord Signal)
-for i in ${pseudo[@]}; do
-   bspc rule -a $i state=pseudo; done
 
 bspc rule -a Conky state=floating manage=off
 bspc rule -a stalonetray state=floating manage=off
@@ -195,6 +145,12 @@ bspdunst
 [[ -z "$(pgrep bspfloat)" ]] && bspfloat &
 
 # Launch default programs
-[[ -z "$(pgrep --full 'firefox -P personal')" ]] && gtk-launch firefox &
-[[ -z "$(pgrep --full 'firefox -P work')" ]] && gtk-launch firefox-work &
 [[ -z "$(pgrep redshift)" ]] && redshift -l 45:-73 &
+
+if [[ -z "$(pgrep --full 'firefox -P personal')" ]]; then
+  bspc rule -a firefox desktop='^2'; gtk-launch firefox; bspc rule -r firefox &
+fi
+
+if [[ -z "$(pgrep --full 'firefox -P work')" ]]; then
+  bspc rule -a firefox-work desktop='^5'; gtk-launch firefox-work; bspc rule -r firefox-work &
+fi

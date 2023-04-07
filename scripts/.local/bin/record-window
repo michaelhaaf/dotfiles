@@ -1,105 +1,23 @@
 #!/usr/bin/env bash
 
-# Adapted from: 
-# - https://github.com/gotbletu/shownotes/blob/master/ffmpeg_x11grab_screencast.txt
-# - https://blog.programster.org/ffmpeg-create-webp-animated-images
+if [ -n "$BASH_LIBRARY" ]; then 
+  . "$BASH_LIBRARY/ffmpeg"; 
+  printf "%s\n" "Starting...";
+else 
+  printf "%s\n" "BASH_LIBRARY environment variable missing. Exiting." >&2; 
+  exit 1; 
+fi
 
-##########################################################
-#
-# GENERAL OPTIONS
-#
-##########################################################
+if [ -z "$1" ]; then OUTPUT=""; else OUTPUT="$1"; fi
 
-FFX_TEMP="/tmp/clip.mkv"
-FFX_OUTPUT_DIR="$HOME/Videos/ffmpeg-casts/"
+ffmpeg-capture-winselect-no-audio "$OUTPUT"
 
-# FFX_MONO="1"
-# FFX_DUAL="2"
-# FFX_HW="hw:1,0"
-# FFX_AUDIO="pcm_s16le"
+# width=1280
+# height=720
+# ffmpeg-to-webm $width $height /tmp/capture.mkv realtime
+# ffmpeg-to-mp4 $width $height /tmp/capture.mkv ultrafast
 
-FFX_CRF="25"
-FFX_FPS="30"
-FFX_PRESET="ultrafast"
-FFX_THREADS="0"
-
-##########################################################
-#
-# WINDOW CAPTURE
-#
-# Prompts mouse cursor to select window you want to record
-##########################################################
-
-FFX_WIDTH=1920
-FFX_HEIGHT=1080
-FFX_SCALE="scale=$FFX_WIDTH:$FFX_HEIGHT"
-
-FFX_VIDEO="libx264"
-
-ffx-winselect() {
-  echo "Select the window you want to record:"
-  FFX_INFO=$(xwininfo -frame)
-
-  ffmpeg \
-    -f x11grab -r $FFX_FPS \
-    -s "$(echo "$FFX_INFO" | grep -oEe 'geometry [0-9]+x[0-9]+'\
-      | grep -oEe '[0-9]+x[0-9]+')" \
-    -i ":0.0+$(echo "$FFX_INFO" | grep -oEe 'Corners:\s+\+[0-9]+\+[0-9]+' \
-      | grep -oEe '[0-9]+\+[0-9]+' | sed -e 's/\+/,/' )" \
-    -vcodec $FFX_VIDEO \
-    -preset $FFX_PRESET -crf $FFX_CRF -threads $FFX_THREADS \
-    -y "$FFX_TEMP"
-}
-
-
-##########################################################
-#
-# WEBP CONVERSION
-#
-##########################################################
-
-FFX_QUALITY=50
-FFX_FPS="30"
-FFX_LOSSLESS="1"           # here I think 1 means true?
-FFX_LOOP="0"               # here I think 0 means true?
-FFX_COMPRESSION_LEVEL="6"  # 0-6, 4 is default
-
-ffx-webp() {
-  FFX_WIDTH=$1
-  FFX_HEIGHT=$2
-  FFX_SCALE="scale=$FFX_WIDTH:$FFX_HEIGHT"
-  FFX_OUTPUT="$FFX_OUTPUT_DIR/window-recording-$(date +"%FT%H%M")".webp
-
-  ffmpeg \
-    -i "$FFX_TEMP" \
-    -lossless $FFX_LOSSLESS \
-    -compression_level $FFX_COMPRESSION_LEVEL \
-    -quality $FFX_QUALITY \
-    -loop $FFX_LOOP \
-    -vf "$FFX_SCALE" \
-    -y "$FFX_OUTPUT"
-}
-
-FFX_WIDTH=1280
-FFX_HEIGHT=720
-FFX_SCALE="scale=$FFX_WIDTH:$FFX_HEIGHT"
-ffmpeg \
-  -i "$FFX_TEMP" \
-  -lossless $FFX_LOSSLESS \
-  -compression_level $FFX_COMPRESSION_LEVEL \
-  -quality $FFX_QUALITY \
-  -loop $FFX_LOOP \
-  -vf $FFX_SCALE \
-  -y "$FFX_OUTPUT"
-
-FFX_WIDTH=768
-FFX_HEIGHT=432
-FFX_SCALE="scale=$FFX_WIDTH:$FFX_HEIGHT"
-ffmpeg \
-  -i "$FFX_TEMP" \
-  -lossless $FFX_LOSSLESS \
-  -compression_level $FFX_COMPRESSION_LEVEL \
-  -quality $FFX_QUALITY \
-  -loop $FFX_LOOP \
-  -vf $FFX_SCALE \
-  -y "$FFX_OUTPUT"
+# width=640
+# height=360
+# ffmpeg-to-webm $width $height /tmp/capture.mkv realtime
+# ffmpeg-to-mp4 $width $height /tmp/capture.mkv ultrafast

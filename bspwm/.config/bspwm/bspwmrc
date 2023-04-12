@@ -82,16 +82,16 @@ bspc rule -r *:*
 
 ## Always Floating Apps
 declare -a floating=(kitty-float pinentry-gnome3)
-for i in ${floating[@]}; do
-   bspc rule -a $i state=floating layer=above; done
+for i in "${floating[@]}"; do
+   bspc rule -a "$i" state=floating layer=above; done
 
 # Start floating windows off to the right hand side
 bspc config external_rules_command ~/.config/bspwm/bin/bspwinpos
 
 ## Always Fullscreen Apps
 declare -a fullscreen=(kitty-full)
-for i in ${fullscreen[@]}; do
-   bspc rule -a $i state=fullscreen; done
+for i in "${fullscreen[@]}"; do
+   bspc rule -a "$i" state=fullscreen; done
 
 bspc rule -a Conky state=floating manage=off
 bspc rule -a stalonetray state=floating manage=off
@@ -105,7 +105,7 @@ killall -9 xsettingsd sxhkd dunst ksuperkey xfce4-power-manager bspc
 xsettingsd --config="$BSPDIR"/xsettingsd &
 
 # polkit agent
-if [[ ! `pidof xfce-polkit` ]]; then
+if [[ ! $(pidof xfce-polkit) ]]; then
 	/usr/lib/xfce-polkit/xfce-polkit &
 fi
 
@@ -146,11 +146,3 @@ bspdunst
 
 # Launch default programs
 [[ -z "$(pgrep redshift)" ]] && redshift -l 45:-73 &
-
-if [[ -z "$(pgrep --full 'firefox -P personal')" ]]; then
-  bspc rule -a firefox desktop='^2'; gtk-launch firefox; bspc rule -r firefox &
-fi
-
-if [[ -z "$(pgrep --full 'firefox -P work')" ]]; then
-  bspc rule -a firefox-work desktop='^5'; gtk-launch firefox-work; bspc rule -r firefox-work &
-fi

@@ -37,7 +37,7 @@ bottom = false
 fixed-center = true
 
 width = 100%
-height = 24
+height = 36
 offset-x = 0
 offset-y = 0
 
@@ -57,22 +57,21 @@ padding = 1
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = "Iosevka Nerd Font:size=12;3"
-font-1 = "Iosevka SS12:style=bold:size=10;3"
-font-2 = "google\\-mdi:size=12;3"
+font-0 = "Iosevka Nerd Font:size=16;3"
+font-1 = "Iosevka SS12:size=12;3"
+font-2 = "google\\-mdi:size=16;3"
 font-3 = "Iosevka SS12:style=bold:size=12;3"
 
 # include-file = ~/.config/bspwm/polybar/system
 include-file = ~/.config/bspwm/polybar/.modules
 
-separator = " ∙ "
+separator = "  "
 separator-foreground = ${color.ALTBLACK}
 spacing = 0
 
 dim-value = 1.0
 
 wm-name = bspwm
-locale = 
 
 tray-position = right
 tray-detached = false

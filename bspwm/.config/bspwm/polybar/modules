@@ -3,7 +3,7 @@
 [module/volume]
 type = custom/ipc
 
-format-font = 2
+format-font = 4
 format = <output>
 
 hook-0 = ~/.config/bspwm/bin/bsppipewire --volume
@@ -41,7 +41,7 @@ ramp-6 = 
 ramp-7 = 
 ramp-8 = 
 ramp-9 = 
-ramp-font = 2
+ramp-font = 4
 ramp-foreground = ${color.MAGENTA}
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
@@ -64,7 +64,7 @@ format-discharging = <ramp-capacity> <label-discharging>
 
 format-full = <label-full>
 format-full-prefix = " "
-format-full-prefix-font = 2
+format-full-prefix-font = 4
 format-full-prefix-foreground = ${color.RED}
 
 label-charging = %{T2}%percentage%%%{T-}
@@ -76,7 +76,7 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
-ramp-capacity-font = 2
+ramp-capacity-font = 4
 ramp-capacity-foreground = ${color.YELLOW}
 
 animation-charging-0 = 
@@ -84,7 +84,7 @@ animation-charging-1 = 
 animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
-animation-charging-font = 2
+animation-charging-font = 4
 animation-charging-foreground = ${color.GREEN}
 animation-charging-framerate = 750
 
@@ -99,7 +99,6 @@ inline-mode = false
 enable-click = true
 enable-scroll = true
 reverse-scroll = true
-
 fuzzy-match = true
 
 ; ws-icon-[0-9]+ = label;icon
@@ -134,7 +133,7 @@ label-focused = %name%
 label-focused-foreground = ${color.BLUE}
 label-focused-background = ${color.BACKGROUND}
 label-focused-underline = ${color.BLUE}
-label-focused-padding = 1
+label-focused-padding = 3
 
 label-occupied = %name%
 label-occupied-foreground = ${color.GREEN}
@@ -153,7 +152,7 @@ label-empty-foreground = ${color.FOREGROUND}
 label-empty-padding = 1
 
 ; Separator in between workspaces
-label-separator = "∙"
+label-separator = "  "
 label-separator-padding = 0
 label-separator-foreground = ${color.ALTBLACK}
 
@@ -199,48 +198,6 @@ label-font = 4
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
-[module/mpd]
-type = internal/mpd
-
-;;host = 127.0.0.1
-;;port = 6600
-;;password = mysecretpassword
-
-interval = 2
-
-format-online = <label-song> <icon-prev> <toggle> <icon-next>
-format-online-prefix = " "
-format-online-prefix-foreground = ${color.GREEN}
-
-format-playing = ${self.format-online}
-format-paused = <label-song> <toggle>
-
-format-offline = <label-offline>
-format-offline-prefix = " "
-format-offline-prefix-foreground = ${color.RED}
-label-offline = "Offline"
-
-label-song =  "%title% | %artist%"
-label-song-maxlen = 40
-label-song-ellipsis = true
-
-icon-play = 
-icon-play-font = 2
-icon-play-foreground = ${color.GREEN}
-icon-pause = 
-icon-pause-font = 2
-icon-pause-foreground = ${color.YELLOW}
-icon-stop = 
-icon-stop-foreground = ${color.RED}
-icon-prev = 玲
-icon-prev-font = 2
-icon-prev-foreground = ${color.CYAN}
-icon-next = 怜
-icon-next-font = 2
-icon-next-foreground = ${color.CYAN}
-
-;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
-
 ; If you use both a wired and a wireless network, add both modules in config.
 [module/network]
 type = internal/network
@@ -260,8 +217,8 @@ format-disconnected-prefix = " "
 format-disconnected-prefix-font = 3
 format-disconnected-prefix-foreground = ${color.RED}
 
-label-connected = "%{T2}%{A1:networkmanager_dmenu &:}%downspeed:8% | %upspeed:8%%{A}%{T-}"
-label-disconnected = "%{T2}%{A1:networkmanager_dmenu &:}Offline%{A}%{T-}"
+label-connected = "%{T4}%{A1:networkmanager_dmenu &:}%downspeed:8% | %upspeed:8%%{A}%{T-}"
+label-disconnected = "%{T4}%{A1:networkmanager_dmenu &:}Offline%{A}%{T-}"
 
 ;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
 
@@ -310,7 +267,7 @@ content-padding = 2
 [module/xwindow]
 type = internal/xwindow
 
-format-prefix = "  "
+format-prefix = "   "
 format-prefix-font = 3
 format-prefix-foreground = ${color.BLUE}
 

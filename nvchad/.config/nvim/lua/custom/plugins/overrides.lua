@@ -21,7 +21,7 @@ M.treesitter = {
 
 M.nvimtree = {
 	view = {
-		adaptive_size = false,
+		adaptive_size = true,
 		hide_root_folder = false,
 	},
 

@@ -41,8 +41,3 @@ export TERMINAL="kitty"
 export EDITOR="nvim"
 export BROWSER="firefox"
 export READER="zathura"
-. "/home/michael/.local/share/cargo/env"
-
-### WAYLAND ###
-export GBM_BACKEND=nvidia-drm
-export __GLC_VENDOR_LIBRARY_NAME=nvidia

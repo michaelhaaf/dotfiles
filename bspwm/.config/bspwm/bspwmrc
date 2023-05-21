@@ -23,7 +23,7 @@ export _JAVA_AWT_WM_NONREPARENTING=1
 source "$BSPDIR"/themes/current.bash
 
 ## Wallpaper
-CURRENT_WALLPAPER=$(find ~/Pictures/wallpapers/ | sort -R | tail -1)
+CURRENT_WALLPAPER=$(find ~/sync/media/pictures/wallpapers/ | sort -R | tail -1)
 
 ## Get the colors from theme file
 FOREGROUND="$foreground"

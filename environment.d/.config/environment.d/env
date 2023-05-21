@@ -1,0 +1,9 @@
+XDG_CONFIG_HOME="$HOME/.config"
+XDG_CACHE_HOME="$HOME/.cache"
+XDG_DATA_HOME="$HOME/.local/share"
+XDG_STATE_HOME="$HOME/.local/share"
+
+ZDOTDIR="$HOME/.config/zsh"
+ZSH="$XDG_CONFIG_HOME/oh-my-zsh"
+ZSH_CACHE_DIR="$ZSH/cache"
+ZSH_COMPDUMP="$ZSH_CACHE_DIR/zcompdump"

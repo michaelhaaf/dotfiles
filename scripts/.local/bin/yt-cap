@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+set -ue
+url="$1"
+outputFile="$2"
+
+# video-cap.sh video-url sub.txt
+#
+# Adapted from: https://stackoverflow.com/a/61296419
+
+# Download captions only and save in a .vtt file
+youtube-dl --skip-download --write-auto-sub "$url";
+
+# Find .vtt files in current directory created within last 3 seconds, limit to 1
+vtt=$(find . -cmin -0.05 -name "*.vtt" | head -1)
+
+# Extract the subs and save as plaintext, removing time, new lines and other markup
+sed '1,/^$/d' "$vtt" \
+  | sed 's/<[^>]*>//g' \
+  | awk -F. 'NR%8==1{$1}NR%8==3' \
+  | tr '\n' ' ' > "$outputFile"
+
+# Remove the original .vtt subs file
+rm -f "$vtt"
+
+sed '1,/^$/d' *.vtt|sed 's/<[^>]*>//g'|awk -F. 'NR%8==1{printf"%s ",$1}NR%8==3'\
+|tee -a "$2")
+

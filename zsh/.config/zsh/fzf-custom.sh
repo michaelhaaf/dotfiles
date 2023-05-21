@@ -3,7 +3,7 @@
 _fzf_custom_finder() {
   RG_PREFIX="rg --hidden --column --line-number --no-heading --color=always --smart-case "
   INITIAL_QUERY="${*:-}"
-  FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY") --exclude .steam --exclude .git --exclude Steam" \
+  FZF_DEFAULT_COMMAND="$RG_PREFIX $(printf %q "$INITIAL_QUERY") --exclude .steam --exclude .custom --exclude Steam" \
   fzf --ansi \
       --color "hl:-1:underline,hl+:-1:underline:reverse" \
       --disabled --query "$INITIAL_QUERY" \
@@ -17,25 +17,33 @@ _fzf_custom_finder() {
       --preview-window 'right,50%,border-rounded,+{2}+3/3,~3' | cut -d":" -f1
 }
 
+if [[ -n "${BASH_VERSION:-}" ]]; then
+  __fzf_custom_init() {
+    bind '"\er": redraw-current-line'
+    local o
+    for o in "$@"; do
+      bind '"\C-g\C-'${o:0:1}'": "`_fzf_custom_'$o'`\e\C-e\er"'
+      bind '"\C-g'${o:0:1}'": "`_fzf_custom_'$o'`\e\C-e\er"'
+    done
+  }
+elif [[ -n "${ZSH_VERSION:-}" ]]; then
+  __fzf_custom_join() {
+    local item
+    while read item; do
+      echo -n "${(q)item} "
+    done
+  }
 
-__fzf_custom_join() {
-  local item
-  while read item; do
-    echo -n "${(q)item} "
-  done
-}
-
-
-# Modelled off of junegunn/fzf_git
-__fzf_custom_init() {
-  local o
-  for o in "$@"; do
-    eval "fzf-custom-$o-widget() { local result=\$(_fzf_custom_$o | __fzf_custom_join); zle reset-prompt; LBUFFER+=\$result }"
-    eval "zle -N fzf-custom-$o-widget"
-    eval "bindkey '^${o[1]}' fzf-custom-$o-widget"
-  done
-}
-
+  __fzf_custom_init() {
+    local o
+    for o in "$@"; do
+      eval "fzf-custom-$o-widget() { local result=\$(_fzf_custom_$o | __fzf_custom_join); zle reset-prompt; LBUFFER+=\$result }"
+      eval "zle -N fzf-custom-$o-widget"
+      eval "bindkey '^g^${o[1]}' fzf-custom-$o-widget"
+      eval "bindkey '^g${o[1]}' fzf-custom-$o-widget"
+    done
+  }
+fi
 
 __fzf_custom_init finder
 

@@ -136,6 +136,7 @@ bspc config pointer_action2 resize_side
 bspc config pointer_action2 resize_corner
 
 # Start bspwm scripts
+[[ $(hostname) = "home" ]] && bsphome
 bspworkspaceupdate
 bspcolors
 bspbar

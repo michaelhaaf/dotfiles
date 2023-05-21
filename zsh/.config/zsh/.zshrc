@@ -18,7 +18,7 @@ ENABLE_CORRECTION="true"
 
 export forgit_add=gaa
 plugins=(
-  fzf pass vi-mode 
+  pass vi-mode fzf
   ripgrep ag 
   zsh-autosuggestions forgit)
 source $ZSH/oh-my-zsh.sh
@@ -34,8 +34,9 @@ export HISTFILE="$XDG_STATE_HOME/zsh/history"
 export HISTSIZE=1000000000
 export SAVEHIST=1000000000
 
-export FZF_DEFAULT_COMMAND='fd --type f --hidden --follow --exclude .git --exclude .steam --exclude Steam'
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+FZF_ARGS="--hidden --follow" 
+export FZF_DEFAULT_COMMAND="fd . ${HOME} ${FZF_ARGS}"
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND --type f"
 export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND --type d"
 
 # MAN page coloring, see https://unix.stackexchange.com/a/501164
@@ -62,6 +63,10 @@ source ~/.config/zsh/fzf-custom.sh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 # export LANG=en_US.UTF-8
+
+export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
+. "/home/michael/.local/share/cargo/env"
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -117,6 +122,10 @@ alias gi='git init'
 alias ga='git add'
 alias gc='git commit -m'
 alias gp='git push origin master'
+
+# fzf
+alias fzfcl="export FZF_DEFAULT_COMMAND='fd . ${FZF_ARGS}'"
+alias fzf-="export FZF_DEFAULT_COMMAND='fd . ${HOME} ${FZF_ARGS}'"
 
 # convenience program aliases
 useragent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_0) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.118    0.79 Safari/537.1 Lynx"

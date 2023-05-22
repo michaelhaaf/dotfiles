@@ -16,13 +16,15 @@ M.treesitter = {
 		"lua",
 		"norg",
 		"python",
+		"java",
+		"kotlin",
 	},
 }
 
 M.nvimtree = {
 	view = {
-		adaptive_size = true,
 		hide_root_folder = false,
+		width = { min = 30, max = 50 },
 	},
 
 	git = {
@@ -89,7 +91,6 @@ M.mason = {
 		-- web dev
 		"css-lsp",
 		"html-lsp",
-		"typescript-language-server",
 		"deno",
 		"emmet-ls",
 		"json-lsp",
@@ -100,15 +101,17 @@ M.mason = {
 		"shfmt",
 		"shellcheck",
 		"beautysh",
+		"yamllint",
 
-		-- python/c
+		-- python/c/java
 		"flake8",
 		"autopep8",
 		"clang-format",
 		"rustfmt",
+		"ktlint",
 
 		-- documentation
-		"proselint",
+		"markdownlint",
 	},
 }
 

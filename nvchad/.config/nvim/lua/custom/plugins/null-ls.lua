@@ -32,9 +32,11 @@ local sources = {
 	b.code_actions.gitsigns,
 	-- b.code_actions.refactoring,
 
-	-- prose
-	b.diagnostics.proselint,
-	b.code_actions.proselint,
+	-- documentation
+  b.formatting.markdownlint,
+
+  -- java/kotlin
+  b.formatting.ktlint
 }
 
 local utils = require("core.utils")

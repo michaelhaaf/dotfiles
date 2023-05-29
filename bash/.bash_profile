@@ -1,9 +1,6 @@
-#
-# ~/.bash_profile
-#
+#!/usr/bin/env bash
 
 [[ -f "$XDG_STATE_HOME"/bash/bashrc ]] && . "$XDG_STATE_HOME"/bash/bashrc
-. "/home/michael/.local/share/cargo/env"
 
 export NVM_DIR="$HOME/.config/nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

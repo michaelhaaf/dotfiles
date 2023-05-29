@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+# inspired by https://github.com/hyprwm/hyprpaper/issues/60
+randomwp=$(find ~/sync/media/pictures/wallpapers/ | shuf -n 1)
+echo -ne "preload=$randomwp\nwallpaper=,$randomwp" > ~/.config/hypr/hyprpaper.conf
+hyprpaper & disown

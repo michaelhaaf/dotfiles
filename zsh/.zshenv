@@ -11,7 +11,7 @@ export XDG_PICTURES_DIR="$HOME/Pictures"
 
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.local/share/cargo/bin:$PATH"
-export PATH="$PATH:$(go env GOPATH)/bin"
+export PATH="$HOME/.local/share/eww:$PATH"
 export PATH="$PATH:$FORGIT_INSTALL_DIR/bin"
 
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"

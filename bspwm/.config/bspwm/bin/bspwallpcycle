@@ -1,4 +1,0 @@
-#!/usr/bin/env bash
-
-wallpaper=$(find ~/Pictures/wallpapers | sort -R | tail -1)
-feh --no-fehbg --bg-fill "$wallpaper"

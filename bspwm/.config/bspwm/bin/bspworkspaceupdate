@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-mapfile -t monitors < <(bspc query -M | uniq)
-bspc monitor "${monitors[0]}" -d '' '' '' '' '' '' '' ''
-[[ "${#monitors[@]}" = 2 ]] && \
-    bspc monitor "${monitors[1]}" -d ﱣ ﱣ
-[[ "${#monitors[@]}" = 3 ]] && \
-    bspc monitor "${monitors[1]}" -d ﱣ && \
-    bspc monitor "${monitors[2]}" -d ﱣ

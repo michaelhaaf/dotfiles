@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# Inspired by: https://github.com/baskerville/bspwm/issues/679#issuecomment-315874130
-
-MON_ID=$(bspc query -M -m "$1")
-MON_POS="$2"
-
-[ "$(bspc query -M -m "$MON_POS")" != "$MON_ID" ] && bspc monitor "$MON_POS" -s "$MON_ID"

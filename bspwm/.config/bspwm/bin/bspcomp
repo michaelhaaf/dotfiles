@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-DIR="$HOME/.config/bspwm"
-
-# Terminate if picom is already running, start it if it is not
-[[ -z "$(pgrep picom)" ]] && picom --config "$DIR"/picom.conf &

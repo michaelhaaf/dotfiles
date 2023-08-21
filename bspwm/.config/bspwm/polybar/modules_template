@@ -1,7 +1,0 @@
-;; Copy 'modules_template' to '.modules' file in this directory
-;; This allows per-machine configuration of modules (laptop vs desktop)
-;; See 'modules' for available modules.
-
-;; modules-left = bspwm
-;; modules-center = mod xwindow sep
-;; modules-right = volume network date

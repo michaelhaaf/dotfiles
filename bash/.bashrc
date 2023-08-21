@@ -30,7 +30,7 @@ unset rc
 [[ -x "$(command -v direnv)" ]] && eval "$(direnv hook bash)"
 [[ -x "$(command -v starship)" ]] && eval "$(starship init bash)"
 
-
+export HOME="/var/home/michael";
 export XDG_CONFIG_HOME="$HOME/.config";
 export XDG_CACHE_HOME="$HOME/.cache";
 export XDG_DATA_HOME="$HOME/.local/share";
@@ -43,8 +43,8 @@ export ZDOTDIR="$HOME/.config/zsh"
 export PASSWORD_STORE_DIR="$XDG_DATA_HOME/password-store"
 export GNUPGHOME="$XDG_DATA_HOME/gnupg"
 
-VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
-VI_MODE_SET_CURSOR=true
+export VI_MODE_RESET_PROMPT_ON_MODE_CHANGE=true
+export VI_MODE_SET_CURSOR=true
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -52,4 +52,3 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR='nvim'
 fi
-

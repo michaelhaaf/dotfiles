@@ -37,6 +37,7 @@ export XDG_DATA_HOME="$HOME/.local/share";
 export XDG_STATE_HOME="$HOME/.local/state";
 export XDG_MUSIC_DIR="$HOME/media/music"
 export XDG_PICTURES_DIR="$HOME/media/pictures"
+export XDG_DATA_DIRS="$XDG_DATA_DIRS:$XDG_DATA_HOME/flatpak/exports/share"
 export DOTFILES="$HOME/dotfiles"
 export ZDOTDIR="$HOME/.config/zsh"
 

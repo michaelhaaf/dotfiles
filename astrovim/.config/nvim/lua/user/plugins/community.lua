@@ -1,9 +1,42 @@
 return {
-  -- Add the community repository of plugin specifications
   "AstroNvim/astrocommunity",
-  -- example of importing a plugin, comment out to use it or add your own
-  -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
+  { import = "astrocommunity.pack.astro" },
+  { import = "astrocommunity.pack.bash" },
+  { import = "astrocommunity.pack.docker" },
+  { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.json" },
+  { import = "astrocommunity.pack.kotlin" },
+  { import = "astrocommunity.pack.markdown" },
+  { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.tailwindcss" },
+  { import = "astrocommunity.pack.terraform" },
+  { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.syntax.vim-easy-align" },
+  { import = "astrocommunity.programming-language-support.csv-vim" },
+  { import = "astrocommunity.note-taking.obsidian-nvim" },
+  { import = "astrocommunity.git.diffview-nvim" },
+  { import = "astrocommunity.markdown-and-latex.vimtex" },
+  { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
+  { import = "astrocommunity.colorscheme.nightfox-nvim" },
+  { import = "astrocommunity.colorscheme.kanagawa-nvim" },
+  { import = "astrocommunity.colorscheme.rose-pine" },
+  { import = "astrocommunity.colorscheme.catppuccin", enabled = true },
+  { -- further customize the options set by the community
+    "catppuccin",
+    opts = {
+      integrations = {
+        sandwich = false,
+        noice = true,
+        mini = true,
+        leap = true,
+        markdown = true,
+        neotest = true,
+        cmp = true,
+        overseer = true,
+        lsp_trouble = true,
+        rainbow_delimiters = true,
+      },
+    },
+  },
 
-  -- { import = "astrocommunity.colorscheme.catppuccin" },
-  -- { import = "astrocommunity.completion.copilot-lua-cmp" },
 }

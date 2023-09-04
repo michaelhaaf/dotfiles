@@ -5,7 +5,6 @@ return {
   { import = "astrocommunity.pack.docker" },
   { import = "astrocommunity.pack.html-css" },
   { import = "astrocommunity.pack.json" },
-  { import = "astrocommunity.pack.kotlin" },
   { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.tailwindcss" },
@@ -43,5 +42,4 @@ return {
       },
     },
   },
-
 }

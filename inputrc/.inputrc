@@ -24,7 +24,10 @@ set visible-stats On
 set colored-stats On
 set colored-completion-prefix On
 
-set show-all-if-unmodified On
+set show-all-if-ambiguous On
+set menu-complete-display-prefix On
+"\t": menu-complete
+"\e[Z": menu-complete-backward
 
 $if mode=vi
         set keymap vi-insert

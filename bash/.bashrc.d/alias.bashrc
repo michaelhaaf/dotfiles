@@ -1,16 +1,14 @@
 # nvim
-alias vim="nvim"
-alias vi="nvim"
-alias v="nvim"
-alias vimdiff='nvim -d'
+[[ -x "$(command -v nvim)" ]] && alias vim="nvim"; alias vi="nvim"; alias v="nvim"; alias vimdiff='nvim -d';
 
 # ls
+alias ll='ls -lahF'
 alias l='ls -lh'
-alias ll='exa -lahF'
 alias la='ls -A'
 alias lm='ls -m'
 alias lr='ls -R'
 alias lg='ls -l --group-directories-first'
+[[ -x "$(command -v exa)" ]] && alias ll='exa -lahF'
 
 # fzf
 alias fzfcl="export FZF_DEFAULT_COMMAND='fd . ${FZF_ARGS}'"

@@ -1,3 +1,3 @@
-return { -- this table overrides highlights in all themes
-  Normal = { bg = "#232136" },
+return { 
+  NotifyBackground = { bg = "#000000" },
 }
